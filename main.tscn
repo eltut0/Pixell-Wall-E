@@ -1,10 +1,22 @@
-[gd_scene load_steps=2 format=3 uid="uid://bvj0oymck53cw"]
+[gd_scene load_steps=7 format=3 uid="uid://bvj0oymck53cw"]
+
+[ext_resource type="Texture2D" uid="uid://briw0i33n7h78" path="res://icons/piclumen-1744239221797.png" id="1_0xm2m"]
+[ext_resource type="Texture2D" uid="uid://dogvynsmmvwb0" path="res://icons/vecteezy_a-photo-of-a-mountain-and-a-mountain-range_56523333.png" id="2_0xm2m"]
+[ext_resource type="Texture2D" uid="uid://c66iaiq2chla3" path="res://icons/vecteezy_16gb-micro-sd-card_56523608.png" id="3_h2yge"]
+[ext_resource type="Texture2D" uid="uid://byler46310632" path="res://icons/vecteezy_a-hand-holding-a-clipboard-and-a-laptop_56523607.png" id="4_1bvp3"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7dm0k"]
-bg_color = Color(0, 0, 0, 1)
+bg_color = Color(0.101961, 0.054902, 0.290196, 1)
 corner_radius_top_right = 30
 corner_radius_bottom_left = 30
 corner_detail = 20
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ig7tw"]
+bg_color = Color(0.101961, 0.054902, 0.290196, 1)
+corner_radius_top_left = 30
+corner_radius_top_right = 30
+corner_radius_bottom_right = 30
+corner_radius_bottom_left = 30
 
 [node name="Main" type="Control"]
 layout_mode = 3
@@ -31,6 +43,8 @@ anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 offset_left = 3.0
+offset_top = 1.0
+offset_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
@@ -46,3 +60,131 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+
+[node name="logo_container" type="VBoxContainer" parent="HBoxContainer/Menu Bar/Menu Bar - Separator"]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+
+[node name="Control" type="Control" parent="HBoxContainer/Menu Bar/Menu Bar - Separator/logo_container"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Piclumen-1744239221797" type="Sprite2D" parent="HBoxContainer/Menu Bar/Menu Bar - Separator/logo_container/Control"]
+position = Vector2(21, 21)
+scale = Vector2(0.0456543, 0.0439453)
+texture = ExtResource("1_0xm2m")
+
+[node name="Resize_logo_container" type="VBoxContainer" parent="HBoxContainer/Menu Bar/Menu Bar - Separator"]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+
+[node name="Control" type="Control" parent="HBoxContainer/Menu Bar/Menu Bar - Separator/Resize_logo_container"]
+layout_mode = 2
+
+[node name="VecteezyA-photo-of-a-mountain-and-a-mountain-range56523333" type="Sprite2D" parent="HBoxContainer/Menu Bar/Menu Bar - Separator/Resize_logo_container/Control"]
+position = Vector2(26.625, 19.0625)
+scale = Vector2(0.0130275, 0.0121122)
+texture = ExtResource("2_0xm2m")
+
+[node name="Save_logo_container" type="VBoxContainer" parent="HBoxContainer/Menu Bar/Menu Bar - Separator"]
+custom_minimum_size = Vector2(0, 40)
+layout_mode = 2
+
+[node name="Control" type="Control" parent="HBoxContainer/Menu Bar/Menu Bar - Separator/Save_logo_container"]
+layout_mode = 2
+
+[node name="Vecteezy16Gb-micro-sd-card56523608" type="Sprite2D" parent="HBoxContainer/Menu Bar/Menu Bar - Separator/Save_logo_container/Control"]
+position = Vector2(23, 19)
+scale = Vector2(0.0143862, 0.0115089)
+texture = ExtResource("3_h2yge")
+
+[node name="Load_logo_container" type="VBoxContainer" parent="HBoxContainer/Menu Bar/Menu Bar - Separator"]
+custom_minimum_size = Vector2(0, 40)
+layout_mode = 2
+
+[node name="Control" type="Control" parent="HBoxContainer/Menu Bar/Menu Bar - Separator/Load_logo_container"]
+layout_mode = 2
+
+[node name="VecteezyA-hand-holding-a-clipboard-and-a-laptop56523607" type="Sprite2D" parent="HBoxContainer/Menu Bar/Menu Bar - Separator/Load_logo_container/Control"]
+position = Vector2(23, 19)
+scale = Vector2(0.0119086, 0.0120684)
+texture = ExtResource("4_1bvp3")
+
+[node name="Top_bar_container" type="VBoxContainer" parent="HBoxContainer"]
+custom_minimum_size = Vector2(0, 20)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 0
+
+[node name="Top_bar_panel" type="Panel" parent="HBoxContainer/Top_bar_container"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_styles/panel = SubResource("StyleBoxFlat_ig7tw")
+
+[node name="Current_file" type="Label" parent="HBoxContainer/Top_bar_container/Top_bar_panel"]
+layout_mode = 1
+anchors_preset = 11
+anchor_left = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -1.0
+grow_horizontal = 0
+grow_vertical = 2
+
+[node name="Top_bar_container" type="HBoxContainer" parent="HBoxContainer/Top_bar_container/Top_bar_panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Title_bar_container" type="HBoxContainer" parent="HBoxContainer/Top_bar_container/Top_bar_panel/Top_bar_container"]
+layout_mode = 2
+
+[node name="Top_bar_title" type="Label" parent="HBoxContainer/Top_bar_container/Top_bar_panel/Top_bar_container/Title_bar_container"]
+layout_mode = 2
+text = "Visual Wall-E Code"
+
+[node name="Current_file_container" type="HBoxContainer" parent="HBoxContainer/Top_bar_container/Top_bar_panel/Top_bar_container"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Current_file" type="Label" parent="HBoxContainer/Top_bar_container/Top_bar_panel/Top_bar_container/Current_file_container"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Your actual file; n*n pixells"
+horizontal_alignment = 1
+
+[node name="Code_editor_container2" type="HBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 63.0
+offset_top = 28.0
+offset_right = -8.0
+offset_bottom = -10.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Editor_container" type="HBoxContainer" parent="Code_editor_container2"]
+custom_minimum_size = Vector2(900, 0)
+layout_mode = 2
+size_flags_horizontal = 0
+
+[node name="Editor" type="Panel" parent="Code_editor_container2/Editor_container"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="CodeEdit" type="CodeEdit" parent="Code_editor_container2/Editor_container/Editor"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Output_console_container" type="HBoxContainer" parent="Code_editor_container2"]
+layout_mode = 2
+size_flags_horizontal = 3
