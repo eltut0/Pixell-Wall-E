@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://briw0i33n7h78"
-path="res://.godot/imported/piclumen-1744239221797.png-9b088fb274ea8c228f4c46c061e0b326.ctex"
+uid="uid://dsyvfh0wn1r5f"
+path="res://.godot/imported/jugar.png-4249c4df9e694b474f88f3fb6ca6d5a7.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://icons/piclumen-1744239221797.png"
-dest_files=["res://.godot/imported/piclumen-1744239221797.png-9b088fb274ea8c228f4c46c061e0b326.ctex"]
+source_file="res://icons/jugar.png"
+dest_files=["res://.godot/imported/jugar.png-4249c4df9e694b474f88f3fb6ca6d5a7.ctex"]
 
 [params]
 
