@@ -1,11 +1,15 @@
-[gd_scene load_steps=10 format=3 uid="uid://bvj0oymck53cw"]
+[gd_scene load_steps=14 format=3 uid="uid://bvj0oymck53cw"]
 
 [ext_resource type="Texture2D" uid="uid://c2tuuem4xkh0" path="res://icons/preview.png" id="1_1bvp3"]
+[ext_resource type="Script" uid="uid://c2crsh40kbsr" path="res://InfoButton.cs" id="1_kek77"]
 [ext_resource type="Texture2D" uid="uid://dogvynsmmvwb0" path="res://icons/vecteezy_a-photo-of-a-mountain-and-a-mountain-range_56523333.png" id="2_0xm2m"]
+[ext_resource type="Script" uid="uid://dt1ardnrjq0pu" path="res://ResizeCanvasButton.cs" id="3_5vw27"]
 [ext_resource type="Texture2D" uid="uid://c66iaiq2chla3" path="res://icons/vecteezy_16gb-micro-sd-card_56523608.png" id="3_h2yge"]
 [ext_resource type="Texture2D" uid="uid://byler46310632" path="res://icons/vecteezy_a-hand-holding-a-clipboard-and-a-laptop_56523607.png" id="4_1bvp3"]
 [ext_resource type="Texture2D" uid="uid://dsyvfh0wn1r5f" path="res://icons/jugar.png" id="5_lquwl"]
-[ext_resource type="Script" uid="uid://dhxrkplwfoj0h" path="res://CodeEditord.cs" id="6_7mycd"]
+[ext_resource type="Script" uid="uid://cmox7rt0hrqoc" path="res://CodeEditord.cs" id="6_7mycd"]
+[ext_resource type="Script" uid="uid://cvoofr8wt4imy" path="res://RunCodeButton.cs" id="7_4c57u"]
+[ext_resource type="Script" uid="uid://bay0yxwyjk1kq" path="res://TopLabelInfo.cs" id="7_5vw27"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7dm0k"]
 bg_color = Color(0.101961, 0.054902, 0.290196, 1)
@@ -78,7 +82,16 @@ layout_mode = 2
 layout_mode = 2
 size_flags_vertical = 3
 
-[node name="Preview" type="Sprite2D" parent="HBoxContainer/Menu Bar/Menu Bar - Separator/logo_container/Control"]
+[node name="info_button" type="Button" parent="HBoxContainer/Menu Bar/Menu Bar - Separator/logo_container/Control"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_kek77")
+
+[node name="Preview" type="Sprite2D" parent="HBoxContainer/Menu Bar/Menu Bar - Separator/logo_container/Control/info_button"]
 position = Vector2(23, 19)
 scale = Vector2(0.0559082, 0.0422363)
 texture = ExtResource("1_1bvp3")
@@ -91,13 +104,19 @@ layout_mode = 2
 layout_mode = 2
 size_flags_vertical = 3
 
-[node name="VecteezyA-photo-of-a-mountain-and-a-mountain-range56523333" type="Sprite2D" parent="HBoxContainer/Menu Bar/Menu Bar - Separator/Resize_logo_container/Control"]
+[node name="resize_canvas_button" type="Button" parent="HBoxContainer/Menu Bar/Menu Bar - Separator/Resize_logo_container/Control"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("3_5vw27")
+
+[node name="VecteezyA-photo-of-a-mountain-and-a-mountain-range56523333" type="Sprite2D" parent="HBoxContainer/Menu Bar/Menu Bar - Separator/Resize_logo_container/Control/resize_canvas_button"]
 position = Vector2(26, 20)
 scale = Vector2(0.0130275, 0.0121122)
 texture = ExtResource("2_0xm2m")
-
-[node name="Panel" type="Panel" parent="HBoxContainer/Menu Bar/Menu Bar - Separator/Resize_logo_container"]
-layout_mode = 2
 
 [node name="Save_logo_container" type="VBoxContainer" parent="HBoxContainer/Menu Bar/Menu Bar - Separator"]
 custom_minimum_size = Vector2(0, 40)
@@ -133,7 +152,16 @@ layout_mode = 2
 layout_mode = 2
 size_flags_vertical = 3
 
-[node name="Jugar" type="Sprite2D" parent="HBoxContainer/Menu Bar/Menu Bar - Separator/VBoxContainer/Control"]
+[node name="Button" type="Button" parent="HBoxContainer/Menu Bar/Menu Bar - Separator/VBoxContainer/Control"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("7_4c57u")
+
+[node name="Jugar" type="Sprite2D" parent="HBoxContainer/Menu Bar/Menu Bar - Separator/VBoxContainer/Control/Button"]
 position = Vector2(26, 20)
 scale = Vector2(0.0644531, 0.0566406)
 texture = ExtResource("5_lquwl")
@@ -178,11 +206,10 @@ text = "Visual Wall-E Code"
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="Current_file" type="Label" parent="HBoxContainer/Top_bar_container/Top_bar_panel/Top_bar_container/Current_file_container"]
+[node name="Label" type="Label" parent="HBoxContainer/Top_bar_container/Top_bar_panel/Top_bar_container/Current_file_container"]
 layout_mode = 2
-size_flags_horizontal = 3
-text = "Your actual file; n*n pixells"
-horizontal_alignment = 1
+size_flags_horizontal = 6
+script = ExtResource("7_5vw27")
 
 [node name="Code_editor_container2" type="HBoxContainer" parent="."]
 layout_mode = 1
