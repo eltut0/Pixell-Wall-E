@@ -9,15 +9,9 @@ public partial class RunCodeButton : Button
 
 	private void RunProgram()
 	{
-		CodeEditord editor = GetNode<CodeEditord>("/root/Main/Code_editor_container2/Editor/CodeEdit");
+		CodeEditord editor = GetNode<CodeEditord>(GlobalParameters.ProjectGlobalParameters.CodeEditorNode);
 		string[] code = editor.GetCode();
 
-		GD.Print("candela");
-		GD.Print(code.Length);
-
-		foreach (string line in code)
-		{
-			GD.Print(line);
-		}
+		Compiler.CodeCompiler.RegularCompilationStart(code);
 	}
 }

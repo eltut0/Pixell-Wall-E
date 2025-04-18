@@ -9,7 +9,7 @@ public partial class CodeEditord : CodeEdit
 
 	public override void _Ready()
 	{
-		code ??= GetNode<CodeEdit>("/root/Main/Code_editor_container2/Editor/CodeEdit");
+		code ??= GetNode<CodeEdit>(GlobalParameters.ProjectGlobalParameters.CodeEditorNode);
 
 		CodeHighlighter syntaxhighlight = new CodeHighlighter();
 		SyntaxHighlighter = syntaxhighlight;

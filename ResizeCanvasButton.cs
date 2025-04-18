@@ -3,7 +3,6 @@ using System;
 
 public partial class ResizeCanvasButton : Button
 {
-	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
 		Pressed += ResizeCanvas;
@@ -31,13 +30,13 @@ public partial class ResizeCanvasButton : Button
 		var input = new LineEdit
 		{
 			PlaceholderText = "Here...",
-			SizeFlagsHorizontal = Control.SizeFlags.ExpandFill
+			SizeFlagsHorizontal = SizeFlags.ExpandFill
 		};
 
 		var button = new Button
 		{
 			Text = "Set",
-			SizeFlagsHorizontal = Control.SizeFlags.ShrinkCenter
+			SizeFlagsHorizontal = SizeFlags.ShrinkCenter
 		};
 
 		vbox.AddChild(label);
@@ -61,11 +60,8 @@ public partial class ResizeCanvasButton : Button
 			inputwindow.QueueFree();
 		};
 
-		inputwindow.PopupCentered();
-	}
+		inputwindow.CloseRequested += () => inputwindow.QueueFree();
 
-	// Called every frame. 'delta' is the elapsed time since the previous frame.
-	public override void _Process(double delta)
-	{
+		inputwindow.PopupCentered();
 	}
 }

@@ -10,7 +10,6 @@ public partial class InfoButton : Button
 
 	private void InfoWindow()
 	{
-		//window for canvas size input
 		var inputwindow = new Window();
 		inputwindow.Title = "Visual Wall-E Code";
 		inputwindow.Size = new Vector2I(300, 150);
@@ -49,6 +48,8 @@ public partial class InfoButton : Button
 		{
 			inputwindow.QueueFree();
 		};
+
+		inputwindow.CloseRequested += () => inputwindow.QueueFree();
 
 		inputwindow.PopupCentered();
 	}

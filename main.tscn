@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://bvj0oymck53cw"]
+[gd_scene load_steps=17 format=3 uid="uid://bvj0oymck53cw"]
 
 [ext_resource type="Texture2D" uid="uid://c2tuuem4xkh0" path="res://icons/preview.png" id="1_1bvp3"]
 [ext_resource type="Script" uid="uid://c2crsh40kbsr" path="res://InfoButton.cs" id="1_kek77"]
@@ -6,10 +6,13 @@
 [ext_resource type="Script" uid="uid://dt1ardnrjq0pu" path="res://ResizeCanvasButton.cs" id="3_5vw27"]
 [ext_resource type="Texture2D" uid="uid://c66iaiq2chla3" path="res://icons/vecteezy_16gb-micro-sd-card_56523608.png" id="3_h2yge"]
 [ext_resource type="Texture2D" uid="uid://byler46310632" path="res://icons/vecteezy_a-hand-holding-a-clipboard-and-a-laptop_56523607.png" id="4_1bvp3"]
+[ext_resource type="Script" uid="uid://bao6mb8d0jr4e" path="res://SaveCodeButton.cs" id="5_efxa6"]
 [ext_resource type="Texture2D" uid="uid://dsyvfh0wn1r5f" path="res://icons/jugar.png" id="5_lquwl"]
 [ext_resource type="Script" uid="uid://cmox7rt0hrqoc" path="res://CodeEditord.cs" id="6_7mycd"]
 [ext_resource type="Script" uid="uid://cvoofr8wt4imy" path="res://RunCodeButton.cs" id="7_4c57u"]
 [ext_resource type="Script" uid="uid://bay0yxwyjk1kq" path="res://TopLabelInfo.cs" id="7_5vw27"]
+[ext_resource type="Texture2D" uid="uid://jxxggg2jkv8j" path="res://icons/bug.png" id="10_dg77c"]
+[ext_resource type="Script" uid="uid://dr4v6xp8xger0" path="res://MenuInfoButton.cs" id="11_ycdy4"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7dm0k"]
 bg_color = Color(0.101961, 0.054902, 0.290196, 1)
@@ -61,12 +64,12 @@ offset_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Menu Bar" type="Panel" parent="HBoxContainer"]
+[node name="Menu_Bar" type="Panel" parent="HBoxContainer"]
 custom_minimum_size = Vector2(50, 0)
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_7dm0k")
 
-[node name="Menu Bar - Separator" type="VBoxContainer" parent="HBoxContainer/Menu Bar"]
+[node name="Menu_Bar_Separator" type="VBoxContainer" parent="HBoxContainer/Menu_Bar"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -74,15 +77,15 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="logo_container" type="VBoxContainer" parent="HBoxContainer/Menu Bar/Menu Bar - Separator"]
+[node name="logo_container" type="VBoxContainer" parent="HBoxContainer/Menu_Bar/Menu_Bar_Separator"]
 custom_minimum_size = Vector2(40, 40)
 layout_mode = 2
 
-[node name="Control" type="Control" parent="HBoxContainer/Menu Bar/Menu Bar - Separator/logo_container"]
+[node name="Control" type="Control" parent="HBoxContainer/Menu_Bar/Menu_Bar_Separator/logo_container"]
 layout_mode = 2
 size_flags_vertical = 3
 
-[node name="info_button" type="Button" parent="HBoxContainer/Menu Bar/Menu Bar - Separator/logo_container/Control"]
+[node name="info_button" type="Button" parent="HBoxContainer/Menu_Bar/Menu_Bar_Separator/logo_container/Control"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -91,20 +94,20 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_kek77")
 
-[node name="Preview" type="Sprite2D" parent="HBoxContainer/Menu Bar/Menu Bar - Separator/logo_container/Control/info_button"]
+[node name="Preview" type="Sprite2D" parent="HBoxContainer/Menu_Bar/Menu_Bar_Separator/logo_container/Control/info_button"]
 position = Vector2(23, 19)
 scale = Vector2(0.0559082, 0.0422363)
 texture = ExtResource("1_1bvp3")
 
-[node name="Resize_logo_container" type="VBoxContainer" parent="HBoxContainer/Menu Bar/Menu Bar - Separator"]
+[node name="Resize_logo_container" type="VBoxContainer" parent="HBoxContainer/Menu_Bar/Menu_Bar_Separator"]
 custom_minimum_size = Vector2(40, 40)
 layout_mode = 2
 
-[node name="Control" type="Control" parent="HBoxContainer/Menu Bar/Menu Bar - Separator/Resize_logo_container"]
+[node name="Control" type="Control" parent="HBoxContainer/Menu_Bar/Menu_Bar_Separator/Resize_logo_container"]
 layout_mode = 2
 size_flags_vertical = 3
 
-[node name="resize_canvas_button" type="Button" parent="HBoxContainer/Menu Bar/Menu Bar - Separator/Resize_logo_container/Control"]
+[node name="resize_canvas_button" type="Button" parent="HBoxContainer/Menu_Bar/Menu_Bar_Separator/Resize_logo_container/Control"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -113,46 +116,55 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("3_5vw27")
 
-[node name="VecteezyA-photo-of-a-mountain-and-a-mountain-range56523333" type="Sprite2D" parent="HBoxContainer/Menu Bar/Menu Bar - Separator/Resize_logo_container/Control/resize_canvas_button"]
+[node name="VecteezyA-photo-of-a-mountain-and-a-mountain-range56523333" type="Sprite2D" parent="HBoxContainer/Menu_Bar/Menu_Bar_Separator/Resize_logo_container/Control/resize_canvas_button"]
 position = Vector2(26, 20)
 scale = Vector2(0.0130275, 0.0121122)
 texture = ExtResource("2_0xm2m")
 
-[node name="Save_logo_container" type="VBoxContainer" parent="HBoxContainer/Menu Bar/Menu Bar - Separator"]
+[node name="Save_logo_container" type="VBoxContainer" parent="HBoxContainer/Menu_Bar/Menu_Bar_Separator"]
 custom_minimum_size = Vector2(0, 40)
 layout_mode = 2
 
-[node name="Control" type="Control" parent="HBoxContainer/Menu Bar/Menu Bar - Separator/Save_logo_container"]
+[node name="Control" type="Control" parent="HBoxContainer/Menu_Bar/Menu_Bar_Separator/Save_logo_container"]
 layout_mode = 2
 size_flags_vertical = 3
 
-[node name="Vecteezy16Gb-micro-sd-card56523608" type="Sprite2D" parent="HBoxContainer/Menu Bar/Menu Bar - Separator/Save_logo_container/Control"]
-position = Vector2(23, 19)
+[node name="SaveCodeButton" type="Button" parent="HBoxContainer/Menu_Bar/Menu_Bar_Separator/Save_logo_container/Control"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("5_efxa6")
+
+[node name="Vecteezy16Gb-micro-sd-card56523608" type="Sprite2D" parent="HBoxContainer/Menu_Bar/Menu_Bar_Separator/Save_logo_container/Control/SaveCodeButton"]
+position = Vector2(25, 20)
 scale = Vector2(0.0143862, 0.0115089)
 texture = ExtResource("3_h2yge")
 
-[node name="Load_logo_container" type="VBoxContainer" parent="HBoxContainer/Menu Bar/Menu Bar - Separator"]
+[node name="Load_logo_container" type="VBoxContainer" parent="HBoxContainer/Menu_Bar/Menu_Bar_Separator"]
 custom_minimum_size = Vector2(0, 40)
 layout_mode = 2
 
-[node name="Control" type="Control" parent="HBoxContainer/Menu Bar/Menu Bar - Separator/Load_logo_container"]
+[node name="Control" type="Control" parent="HBoxContainer/Menu_Bar/Menu_Bar_Separator/Load_logo_container"]
 layout_mode = 2
 size_flags_vertical = 3
 
-[node name="VecteezyA-hand-holding-a-clipboard-and-a-laptop56523607" type="Sprite2D" parent="HBoxContainer/Menu Bar/Menu Bar - Separator/Load_logo_container/Control"]
+[node name="VecteezyA-hand-holding-a-clipboard-and-a-laptop56523607" type="Sprite2D" parent="HBoxContainer/Menu_Bar/Menu_Bar_Separator/Load_logo_container/Control"]
 position = Vector2(23, 19)
 scale = Vector2(0.0119086, 0.0120684)
 texture = ExtResource("4_1bvp3")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer/Menu Bar/Menu Bar - Separator"]
+[node name="Run_logo" type="VBoxContainer" parent="HBoxContainer/Menu_Bar/Menu_Bar_Separator"]
 custom_minimum_size = Vector2(0, 40)
 layout_mode = 2
 
-[node name="Control" type="Control" parent="HBoxContainer/Menu Bar/Menu Bar - Separator/VBoxContainer"]
+[node name="Control" type="Control" parent="HBoxContainer/Menu_Bar/Menu_Bar_Separator/Run_logo"]
 layout_mode = 2
 size_flags_vertical = 3
 
-[node name="Button" type="Button" parent="HBoxContainer/Menu Bar/Menu Bar - Separator/VBoxContainer/Control"]
+[node name="Button" type="Button" parent="HBoxContainer/Menu_Bar/Menu_Bar_Separator/Run_logo/Control"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -161,10 +173,49 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("7_4c57u")
 
-[node name="Jugar" type="Sprite2D" parent="HBoxContainer/Menu Bar/Menu Bar - Separator/VBoxContainer/Control/Button"]
+[node name="Jugar" type="Sprite2D" parent="HBoxContainer/Menu_Bar/Menu_Bar_Separator/Run_logo/Control/Button"]
 position = Vector2(26, 20)
 scale = Vector2(0.0644531, 0.0566406)
 texture = ExtResource("5_lquwl")
+
+[node name="Debug_logo" type="VBoxContainer" parent="HBoxContainer/Menu_Bar/Menu_Bar_Separator"]
+custom_minimum_size = Vector2(0, 40)
+layout_mode = 2
+
+[node name="Control" type="Control" parent="HBoxContainer/Menu_Bar/Menu_Bar_Separator/Debug_logo"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Button" type="Button" parent="HBoxContainer/Menu_Bar/Menu_Bar_Separator/Debug_logo/Control"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Bug" type="Sprite2D" parent="HBoxContainer/Menu_Bar/Menu_Bar_Separator/Debug_logo/Control/Button"]
+position = Vector2(25, 19)
+scale = Vector2(0.0722656, 0.0546875)
+texture = ExtResource("10_dg77c")
+
+[node name="Info_logo" type="VBoxContainer" parent="HBoxContainer/Menu_Bar/Menu_Bar_Separator"]
+custom_minimum_size = Vector2(0, 40)
+layout_mode = 2
+
+[node name="Control" type="Control" parent="HBoxContainer/Menu_Bar/Menu_Bar_Separator/Info_logo"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Button" type="Button" parent="HBoxContainer/Menu_Bar/Menu_Bar_Separator/Info_logo/Control"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "?"
+script = ExtResource("11_ycdy4")
 
 [node name="Top_bar_container" type="VBoxContainer" parent="HBoxContainer"]
 custom_minimum_size = Vector2(0, 20)
