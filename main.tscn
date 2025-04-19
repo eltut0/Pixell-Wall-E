@@ -1,19 +1,20 @@
-[gd_scene load_steps=18 format=3 uid="uid://bvj0oymck53cw"]
+[gd_scene load_steps=19 format=3 uid="uid://bvj0oymck53cw"]
 
 [ext_resource type="Texture2D" uid="uid://c2tuuem4xkh0" path="res://icons/preview.png" id="1_1bvp3"]
 [ext_resource type="Script" uid="uid://c2crsh40kbsr" path="res://InfoButton.cs" id="1_kek77"]
-[ext_resource type="Texture2D" uid="uid://dogvynsmmvwb0" path="res://icons/vecteezy_a-photo-of-a-mountain-and-a-mountain-range_56523333.png" id="2_0xm2m"]
 [ext_resource type="Script" uid="uid://dt1ardnrjq0pu" path="res://ResizeCanvasButton.cs" id="3_5vw27"]
-[ext_resource type="Texture2D" uid="uid://c66iaiq2chla3" path="res://icons/vecteezy_16gb-micro-sd-card_56523608.png" id="3_h2yge"]
-[ext_resource type="Texture2D" uid="uid://byler46310632" path="res://icons/vecteezy_a-hand-holding-a-clipboard-and-a-laptop_56523607.png" id="4_1bvp3"]
+[ext_resource type="Texture2D" uid="uid://dqboqh2tdtsne" path="res://icons/aspect-ratio.svg" id="4_w48qg"]
 [ext_resource type="Script" uid="uid://bao6mb8d0jr4e" path="res://SaveCodeButton.cs" id="5_efxa6"]
 [ext_resource type="Texture2D" uid="uid://dsyvfh0wn1r5f" path="res://icons/jugar.png" id="5_lquwl"]
 [ext_resource type="Script" uid="uid://cmox7rt0hrqoc" path="res://CodeEditord.cs" id="6_7mycd"]
+[ext_resource type="Texture2D" uid="uid://ct7q2nab1qeba" path="res://icons/device-floppy.svg" id="6_vivmo"]
 [ext_resource type="Script" uid="uid://cvoofr8wt4imy" path="res://RunCodeButton.cs" id="7_4c57u"]
 [ext_resource type="Script" uid="uid://bay0yxwyjk1kq" path="res://TopLabelInfo.cs" id="7_5vw27"]
 [ext_resource type="Script" uid="uid://iibpywr4mid2" path="res://Button Scripts/GetFileScript.cs" id="7_w48qg"]
+[ext_resource type="Texture2D" uid="uid://bj7qeevg4nj8l" path="res://icons/file-upload.svg" id="8_2cqfq"]
 [ext_resource type="Texture2D" uid="uid://jxxggg2jkv8j" path="res://icons/bug.png" id="10_dg77c"]
 [ext_resource type="Script" uid="uid://dr4v6xp8xger0" path="res://MenuInfoButton.cs" id="11_ycdy4"]
+[ext_resource type="Texture2D" uid="uid://ct3auvjb72x4p" path="res://icons/question-mark.svg" id="13_vivmo"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7dm0k"]
 bg_color = Color(0.101961, 0.054902, 0.290196, 1)
@@ -117,10 +118,11 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("3_5vw27")
 
-[node name="VecteezyA-photo-of-a-mountain-and-a-mountain-range56523333" type="Sprite2D" parent="HBoxContainer/Menu_Bar/Menu_Bar_Separator/Resize_logo_container/Control/resize_canvas_button"]
-position = Vector2(26, 20)
-scale = Vector2(0.0130275, 0.0121122)
-texture = ExtResource("2_0xm2m")
+[node name="Aspect-ratio" type="Sprite2D" parent="HBoxContainer/Menu_Bar/Menu_Bar_Separator/Resize_logo_container/Control/resize_canvas_button"]
+light_mask = 513
+position = Vector2(25, 19)
+scale = Vector2(1.95833, 1.79167)
+texture = ExtResource("4_w48qg")
 
 [node name="Save_logo_container" type="VBoxContainer" parent="HBoxContainer/Menu_Bar/Menu_Bar_Separator"]
 custom_minimum_size = Vector2(0, 40)
@@ -139,10 +141,10 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("5_efxa6")
 
-[node name="Vecteezy16Gb-micro-sd-card56523608" type="Sprite2D" parent="HBoxContainer/Menu_Bar/Menu_Bar_Separator/Save_logo_container/Control/SaveCodeButton"]
-position = Vector2(25, 20)
-scale = Vector2(0.0143862, 0.0115089)
-texture = ExtResource("3_h2yge")
+[node name="Device-floppy" type="Sprite2D" parent="HBoxContainer/Menu_Bar/Menu_Bar_Separator/Save_logo_container/Control/SaveCodeButton"]
+position = Vector2(25, 21)
+scale = Vector2(2.04167, 1.75)
+texture = ExtResource("6_vivmo")
 
 [node name="Load_logo_container" type="VBoxContainer" parent="HBoxContainer/Menu_Bar/Menu_Bar_Separator"]
 custom_minimum_size = Vector2(0, 40)
@@ -161,10 +163,10 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("7_w48qg")
 
-[node name="VecteezyA-hand-holding-a-clipboard-and-a-laptop56523607" type="Sprite2D" parent="HBoxContainer/Menu_Bar/Menu_Bar_Separator/Load_logo_container/Control/LoadButton"]
-position = Vector2(23, 19)
-scale = Vector2(0.0119086, 0.0120684)
-texture = ExtResource("4_1bvp3")
+[node name="File-upload" type="Sprite2D" parent="HBoxContainer/Menu_Bar/Menu_Bar_Separator/Load_logo_container/Control/LoadButton"]
+position = Vector2(25, 20)
+scale = Vector2(1.83333, 1.58333)
+texture = ExtResource("8_2cqfq")
 
 [node name="Run_logo" type="VBoxContainer" parent="HBoxContainer/Menu_Bar/Menu_Bar_Separator"]
 custom_minimum_size = Vector2(0, 40)
@@ -224,8 +226,12 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-text = "?"
 script = ExtResource("11_ycdy4")
+
+[node name="Question-mark" type="Sprite2D" parent="HBoxContainer/Menu_Bar/Menu_Bar_Separator/Info_logo/Control"]
+position = Vector2(24, 20)
+scale = Vector2(1.33333, 1.16667)
+texture = ExtResource("13_vivmo")
 
 [node name="Top_bar_container" type="VBoxContainer" parent="HBoxContainer"]
 custom_minimum_size = Vector2(0, 20)

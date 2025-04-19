@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dogvynsmmvwb0"
-path="res://.godot/imported/vecteezy_a-photo-of-a-mountain-and-a-mountain-range_56523333.png-74347cd78578bb101fa8a2862a1def3f.ctex"
+uid="uid://ct3auvjb72x4p"
+path="res://.godot/imported/question-mark.svg-69d88adbcf5a4e27ef673e4e987340e9.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://icons/vecteezy_a-photo-of-a-mountain-and-a-mountain-range_56523333.png"
-dest_files=["res://.godot/imported/vecteezy_a-photo-of-a-mountain-and-a-mountain-range_56523333.png-74347cd78578bb101fa8a2862a1def3f.ctex"]
+source_file="res://icons/question-mark.svg"
+dest_files=["res://.godot/imported/question-mark.svg-69d88adbcf5a4e27ef673e4e987340e9.ctex"]
 
 [params]
 
@@ -32,3 +32,6 @@ process/hdr_as_srgb=false
 process/hdr_clamp_exposure=false
 process/size_limit=0
 detect_3d/compress_to=1
+svg/scale=1.0
+editor/scale_with_editor_scale=false
+editor/convert_colors_with_editor_theme=false

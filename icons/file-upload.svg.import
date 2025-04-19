@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://byler46310632"
-path="res://.godot/imported/vecteezy_a-hand-holding-a-clipboard-and-a-laptop_56523607.png-7cc305dfd35c0375bfebcb7b84c4803e.ctex"
+uid="uid://bj7qeevg4nj8l"
+path="res://.godot/imported/file-upload.svg-b9b1ceaca0e6c19145667884b9810242.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://icons/vecteezy_a-hand-holding-a-clipboard-and-a-laptop_56523607.png"
-dest_files=["res://.godot/imported/vecteezy_a-hand-holding-a-clipboard-and-a-laptop_56523607.png-7cc305dfd35c0375bfebcb7b84c4803e.ctex"]
+source_file="res://icons/file-upload.svg"
+dest_files=["res://.godot/imported/file-upload.svg-b9b1ceaca0e6c19145667884b9810242.ctex"]
 
 [params]
 
@@ -32,3 +32,6 @@ process/hdr_as_srgb=false
 process/hdr_clamp_exposure=false
 process/size_limit=0
 detect_3d/compress_to=1
+svg/scale=1.0
+editor/scale_with_editor_scale=false
+editor/convert_colors_with_editor_theme=false
