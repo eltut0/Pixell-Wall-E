@@ -1,7 +1,5 @@
 using Godot;
-using System.ComponentModel;
 using System.IO;
-using System.Threading;
 using System.Threading.Tasks;
 
 public partial class SaveCodeButton : Button
@@ -63,10 +61,8 @@ public partial class SaveCodeButton : Button
 		button.Pressed += () =>
 		{
 			//if enters the file with the .pw
-			if (input.Text[input.Text.Length - 1] == 'w' && input.Text[input.Text.Length - 2] == 'p' && input.Text[input.Text.Length - 3] == '.')
-			{
-				input.Text = input.Text.Substring(0, input.Text.Length - 3);
-			}
+			input.Text = Utils.FileNameCorrection(input.Text);
+
 			GlobalParameters.ProjectGlobalParameters.ActualFileLocation = $"{input.Text}.pw";
 			localnode.EmitSignal(SignalName.OnDecisionMade, "confirmed");
 			inputwindow.QueueFree();
@@ -83,14 +79,19 @@ public partial class SaveCodeButton : Button
 		{
 			using (StreamWriter sw = new StreamWriter(Path.Combine(GlobalParameters.ProjectGlobalParameters.GenericLocalFolderRoute, GlobalParameters.ProjectGlobalParameters.ActualFileLocation)))
 			{
-				CodeEditord editor = localnode.GetNode<CodeEditord>(GlobalParameters.ProjectGlobalParameters.CodeEditorNode);
-				string[] code = editor.GetCode();
-
-				sw.WriteLine(GlobalParameters.ProjectGlobalParameters.CanvasSize);
-
-				foreach (string line in code)
+				if (GlobalParameters.ProjectGlobalParameters.ActualFileLocation != "Non opened project")
 				{
-					sw.WriteLine(line);
+					CodeEditord editor = localnode.GetNode<CodeEditord>(GlobalParameters.ProjectGlobalParameters.CodeEditorNode);
+					string[] code = editor.GetCode();
+
+					sw.WriteLine(GlobalParameters.ProjectGlobalParameters.CanvasSize);
+
+					foreach (string line in code)
+					{
+						sw.WriteLine(line);
+					}
+
+					sw.Close();
 				}
 			}
 		}

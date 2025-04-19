@@ -15,9 +15,13 @@ namespace GlobalParameters
         //routes for nodes
         public const string CodeEditorNode = "/root/Main/Code_editor_container2/Editor/CodeEdit";
         public const string SaveButtonNode = "/root/Main/HBoxContainer/Menu_Bar/Menu_Bar_Separator/Save_logo_container/Control/SaveCodeButton";
+        public const string LoadButtonNode = "/root/Main/HBoxContainer/Menu_Bar/Menu_Bar_Separator/Load_logo_container/Control/LoadButton";
 
         //files folder generic route
         private static string proyectoPath = System.IO.Directory.GetCurrentDirectory();
         public static string GenericLocalFolderRoute = Path.Combine(proyectoPath, "Local_Files");
+
+        //github link
+        public static string GHLink = "https://github.com/eltut0/Pixell-Wall-E";
     }
 }

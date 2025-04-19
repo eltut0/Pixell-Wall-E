@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://bvj0oymck53cw"]
+[gd_scene load_steps=18 format=3 uid="uid://bvj0oymck53cw"]
 
 [ext_resource type="Texture2D" uid="uid://c2tuuem4xkh0" path="res://icons/preview.png" id="1_1bvp3"]
 [ext_resource type="Script" uid="uid://c2crsh40kbsr" path="res://InfoButton.cs" id="1_kek77"]
@@ -11,6 +11,7 @@
 [ext_resource type="Script" uid="uid://cmox7rt0hrqoc" path="res://CodeEditord.cs" id="6_7mycd"]
 [ext_resource type="Script" uid="uid://cvoofr8wt4imy" path="res://RunCodeButton.cs" id="7_4c57u"]
 [ext_resource type="Script" uid="uid://bay0yxwyjk1kq" path="res://TopLabelInfo.cs" id="7_5vw27"]
+[ext_resource type="Script" uid="uid://iibpywr4mid2" path="res://Button Scripts/GetFileScript.cs" id="7_w48qg"]
 [ext_resource type="Texture2D" uid="uid://jxxggg2jkv8j" path="res://icons/bug.png" id="10_dg77c"]
 [ext_resource type="Script" uid="uid://dr4v6xp8xger0" path="res://MenuInfoButton.cs" id="11_ycdy4"]
 
@@ -151,7 +152,16 @@ layout_mode = 2
 layout_mode = 2
 size_flags_vertical = 3
 
-[node name="VecteezyA-hand-holding-a-clipboard-and-a-laptop56523607" type="Sprite2D" parent="HBoxContainer/Menu_Bar/Menu_Bar_Separator/Load_logo_container/Control"]
+[node name="LoadButton" type="Button" parent="HBoxContainer/Menu_Bar/Menu_Bar_Separator/Load_logo_container/Control"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("7_w48qg")
+
+[node name="VecteezyA-hand-holding-a-clipboard-and-a-laptop56523607" type="Sprite2D" parent="HBoxContainer/Menu_Bar/Menu_Bar_Separator/Load_logo_container/Control/LoadButton"]
 position = Vector2(23, 19)
 scale = Vector2(0.0119086, 0.0120684)
 texture = ExtResource("4_1bvp3")
