@@ -55,10 +55,9 @@ public partial class GetFileScript : Button
 				SetScript(sb.ToString(), localnode);
 			}
 		}
-
-		catch (DirectoryNotFoundException)
+		catch (FileNotFoundException)
 		{
-			InfoWindow.DisplayInfoWindow("Error", "Not valid file", 300, 90);
+			InfoWindow.DisplayInfoWindow("Error", "File not found", 300, 90);
 		}
 	}
 
@@ -140,18 +139,25 @@ public partial class GetFileScript : Button
 		string[] files = Directory.GetFiles(GlobalParameters.ProjectGlobalParameters.GenericLocalFolderRoute);
 		int count = 0;
 		int maxlenght = 0;
-		foreach (string file in files)
+		if (files.Length > 0)
 		{
-			string[] splittedfile = file.Split('/');
-			sb.Append($"{splittedfile[splittedfile.Length - 1]}\n");
-
-			if (splittedfile[splittedfile.Length - 1].Length > maxlenght)
+			foreach (string file in files)
 			{
-				maxlenght = splittedfile[splittedfile.Length - 1].Length;
-			}
-			count++;
-		}
+				string[] splittedfile = file.Split('/');
+				sb.Append($"{splittedfile[splittedfile.Length - 1]}\n");
 
-		InfoWindow.DisplayInfoWindow("Files", sb.ToString(), 150 + (maxlenght * 10), count * 40);
+				if (splittedfile[splittedfile.Length - 1].Length > maxlenght)
+				{
+					maxlenght = splittedfile[splittedfile.Length - 1].Length;
+				}
+				count++;
+			}
+
+			InfoWindow.DisplayInfoWindow("Files", sb.ToString(), 150 + (maxlenght * 10), count * 40);
+		}
+		else
+		{
+			InfoWindow.DisplayInfoWindow("Empty directory", "There aren't avaiable files. \n Copy files to the Local Files folder for \n loading to the editor", 300, 120);
+		}
 	}
 }
