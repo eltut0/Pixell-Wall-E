@@ -1,5 +1,4 @@
 using Godot;
-using System;
 using System.IO;
 using System.Text;
 using System.Threading.Tasks;
@@ -24,8 +23,6 @@ public partial class GetFileScript : Button
 
 		if (TempFileName != null)
 		{
-			GD.Print(TempFileName);
-
 			GetTheScript(localnode);
 		}
 	}
@@ -127,12 +124,34 @@ public partial class GetFileScript : Button
 
 		button2.Pressed += () =>
 		{
-			//implement info window
-			//include \n
+			FileListingWindow();
+			inputwindow.QueueFree();
 		};
 
 		inputwindow.CloseRequested += () => inputwindow.QueueFree();
 
 		inputwindow.PopupCentered();
+	}
+
+	private static void FileListingWindow()
+	{
+		StringBuilder sb = new StringBuilder();
+
+		string[] files = Directory.GetFiles(GlobalParameters.ProjectGlobalParameters.GenericLocalFolderRoute);
+		int count = 0;
+		int maxlenght = 0;
+		foreach (string file in files)
+		{
+			string[] splittedfile = file.Split('/');
+			sb.Append($"{splittedfile[splittedfile.Length - 1]}\n");
+
+			if (splittedfile[splittedfile.Length - 1].Length > maxlenght)
+			{
+				maxlenght = splittedfile[splittedfile.Length - 1].Length;
+			}
+			count++;
+		}
+
+		InfoWindow.DisplayInfoWindow("Files", sb.ToString(), 150 + (maxlenght * 10), count * 40);
 	}
 }

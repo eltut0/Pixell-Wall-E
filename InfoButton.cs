@@ -12,7 +12,7 @@ public partial class InfoButton : Button
 	{
 		var inputwindow = new Window();
 		inputwindow.Title = "Visual Wall-E Code";
-		inputwindow.Size = new Vector2I(300, 150);
+		inputwindow.Size = new Vector2I(300, 100);
 		inputwindow.Unresizable = true;
 
 		var vbox = new VBoxContainer();
@@ -52,10 +52,5 @@ public partial class InfoButton : Button
 		inputwindow.CloseRequested += () => inputwindow.QueueFree();
 
 		inputwindow.PopupCentered();
-	}
-
-	// Called every frame. 'delta' is the elapsed time since the previous frame.
-	public override void _Process(double delta)
-	{
 	}
 }
