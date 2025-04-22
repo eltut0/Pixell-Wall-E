@@ -153,7 +153,7 @@ public partial class GetFileScript : Button
 				count++;
 			}
 
-			InfoWindow.DisplayInfoWindow("Files", sb.ToString(), 150 + (maxlenght * 10), count * 40);
+			InfoWindow.DisplayInfoWindow("Files", sb.ToString(), 150 + (maxlenght * 10), count * 50);
 		}
 		else
 		{

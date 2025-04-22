@@ -1,20 +1,23 @@
-[gd_scene load_steps=19 format=3 uid="uid://bvj0oymck53cw"]
+[gd_scene load_steps=22 format=3 uid="uid://bvj0oymck53cw"]
 
 [ext_resource type="Texture2D" uid="uid://c2tuuem4xkh0" path="res://icons/preview.png" id="1_1bvp3"]
 [ext_resource type="Script" uid="uid://c2crsh40kbsr" path="res://InfoButton.cs" id="1_kek77"]
 [ext_resource type="Script" uid="uid://dt1ardnrjq0pu" path="res://ResizeCanvasButton.cs" id="3_5vw27"]
 [ext_resource type="Texture2D" uid="uid://dqboqh2tdtsne" path="res://icons/aspect-ratio.svg" id="4_w48qg"]
 [ext_resource type="Script" uid="uid://bao6mb8d0jr4e" path="res://SaveCodeButton.cs" id="5_efxa6"]
-[ext_resource type="Texture2D" uid="uid://dsyvfh0wn1r5f" path="res://icons/jugar.png" id="5_lquwl"]
+[ext_resource type="Texture2D" uid="uid://dsyvfh0wn1r5f" path="res://icons/RunIcon.png" id="5_lquwl"]
 [ext_resource type="Script" uid="uid://cmox7rt0hrqoc" path="res://CodeEditord.cs" id="6_7mycd"]
 [ext_resource type="Texture2D" uid="uid://ct7q2nab1qeba" path="res://icons/device-floppy.svg" id="6_vivmo"]
 [ext_resource type="Script" uid="uid://cvoofr8wt4imy" path="res://RunCodeButton.cs" id="7_4c57u"]
 [ext_resource type="Script" uid="uid://bay0yxwyjk1kq" path="res://TopLabelInfo.cs" id="7_5vw27"]
 [ext_resource type="Script" uid="uid://iibpywr4mid2" path="res://Button Scripts/GetFileScript.cs" id="7_w48qg"]
-[ext_resource type="Texture2D" uid="uid://bj7qeevg4nj8l" path="res://icons/file-upload.svg" id="8_2cqfq"]
-[ext_resource type="Texture2D" uid="uid://jxxggg2jkv8j" path="res://icons/bug.png" id="10_dg77c"]
+[ext_resource type="Texture2D" uid="uid://bj7qeevg4nj8l" path="res://icons/SaveIcon.svg" id="8_2cqfq"]
+[ext_resource type="Texture2D" uid="uid://jxxggg2jkv8j" path="res://icons/DebugIcon.png" id="10_dg77c"]
+[ext_resource type="Script" uid="uid://dxthk8731cc7f" path="res://Button Scripts/DebugButton.cs" id="11_2cqfq"]
 [ext_resource type="Script" uid="uid://dr4v6xp8xger0" path="res://MenuInfoButton.cs" id="11_ycdy4"]
-[ext_resource type="Texture2D" uid="uid://ct3auvjb72x4p" path="res://icons/question-mark.svg" id="13_vivmo"]
+[ext_resource type="Texture2D" uid="uid://ct3auvjb72x4p" path="res://icons/QuestionIcon.svg" id="13_vivmo"]
+[ext_resource type="Script" uid="uid://dgnky2dr25gsd" path="res://Button Scripts/ExitButton.cs" id="16_yaehf"]
+[ext_resource type="Texture2D" uid="uid://cimcn2q7g8lyg" path="res://icons/ExitIcon.png" id="17_074og"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7dm0k"]
 bg_color = Color(0.101961, 0.054902, 0.290196, 1)
@@ -163,7 +166,7 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("7_w48qg")
 
-[node name="File-upload" type="Sprite2D" parent="HBoxContainer/Menu_Bar/Menu_Bar_Separator/Load_logo_container/Control/LoadButton"]
+[node name="SaveIcon" type="Sprite2D" parent="HBoxContainer/Menu_Bar/Menu_Bar_Separator/Load_logo_container/Control/LoadButton"]
 position = Vector2(25, 20)
 scale = Vector2(1.83333, 1.58333)
 texture = ExtResource("8_2cqfq")
@@ -185,7 +188,7 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("7_4c57u")
 
-[node name="Jugar" type="Sprite2D" parent="HBoxContainer/Menu_Bar/Menu_Bar_Separator/Run_logo/Control/Button"]
+[node name="RunIcon" type="Sprite2D" parent="HBoxContainer/Menu_Bar/Menu_Bar_Separator/Run_logo/Control/Button"]
 position = Vector2(26, 20)
 scale = Vector2(0.0644531, 0.0566406)
 texture = ExtResource("5_lquwl")
@@ -198,15 +201,16 @@ layout_mode = 2
 layout_mode = 2
 size_flags_vertical = 3
 
-[node name="Button" type="Button" parent="HBoxContainer/Menu_Bar/Menu_Bar_Separator/Debug_logo/Control"]
+[node name="DebugButton" type="Button" parent="HBoxContainer/Menu_Bar/Menu_Bar_Separator/Debug_logo/Control"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("11_2cqfq")
 
-[node name="Bug" type="Sprite2D" parent="HBoxContainer/Menu_Bar/Menu_Bar_Separator/Debug_logo/Control/Button"]
+[node name="DebugIcon" type="Sprite2D" parent="HBoxContainer/Menu_Bar/Menu_Bar_Separator/Debug_logo/Control/DebugButton"]
 position = Vector2(25, 19)
 scale = Vector2(0.0722656, 0.0546875)
 texture = ExtResource("10_dg77c")
@@ -228,7 +232,7 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("11_ycdy4")
 
-[node name="Question-mark" type="Sprite2D" parent="HBoxContainer/Menu_Bar/Menu_Bar_Separator/Info_logo/Control"]
+[node name="QuestionIcon" type="Sprite2D" parent="HBoxContainer/Menu_Bar/Menu_Bar_Separator/Info_logo/Control"]
 position = Vector2(24, 20)
 scale = Vector2(1.33333, 1.16667)
 texture = ExtResource("13_vivmo")
@@ -277,6 +281,28 @@ size_flags_horizontal = 3
 layout_mode = 2
 size_flags_horizontal = 6
 script = ExtResource("7_5vw27")
+
+[node name="ExitButton" type="HBoxContainer" parent="HBoxContainer/Top_bar_container/Top_bar_panel/Top_bar_container"]
+custom_minimum_size = Vector2(30, 0)
+layout_mode = 2
+
+[node name="Control" type="Control" parent="HBoxContainer/Top_bar_container/Top_bar_panel/Top_bar_container/ExitButton"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="ExitButton" type="Button" parent="HBoxContainer/Top_bar_container/Top_bar_panel/Top_bar_container/ExitButton/Control"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("16_yaehf")
+
+[node name="ExitIcon" type="Sprite2D" parent="HBoxContainer/Top_bar_container/Top_bar_panel/Top_bar_container/ExitButton/Control/ExitButton"]
+position = Vector2(15, 11)
+scale = Vector2(0.00866669, 0.007)
+texture = ExtResource("17_074og")
 
 [node name="Code_editor_container2" type="HBoxContainer" parent="."]
 layout_mode = 1

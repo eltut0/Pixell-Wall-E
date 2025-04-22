@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dsyvfh0wn1r5f"
-path="res://.godot/imported/jugar.png-4249c4df9e694b474f88f3fb6ca6d5a7.ctex"
+uid="uid://cimcn2q7g8lyg"
+path="res://.godot/imported/ExitIcon.png-2e67d7ad1d8f811165fdfe80a7d7b5f7.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://icons/jugar.png"
-dest_files=["res://.godot/imported/jugar.png-4249c4df9e694b474f88f3fb6ca6d5a7.ctex"]
+source_file="res://icons/ExitIcon.png"
+dest_files=["res://.godot/imported/ExitIcon.png-2e67d7ad1d8f811165fdfe80a7d7b5f7.ctex"]
 
 [params]
 
