@@ -7,7 +7,7 @@ namespace Lexer
     partial class Lexer
     {
         public static List<Token> Tokens = new List<Token>();
-        private static readonly string delimitters = @"([(),""\[\] ])";
+        private static readonly string delimitters = @"([(),""\[\] #])";
         public static void InitializeLex(string[] code)
         {
             Tokens.Clear();
