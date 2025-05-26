@@ -15,6 +15,7 @@ namespace Lexer
             foreach (string line in code)
             {
                 LineAnalisis(line, count);
+                count++;
             }
         }
 
@@ -32,7 +33,6 @@ namespace Lexer
             int position = 0;
             foreach (string token in tokens)
             {
-                //check type
                 if (TokenTypes.operators.Contains(token))
                 {
                     new Token(TokenType.Operator, token, line, position);

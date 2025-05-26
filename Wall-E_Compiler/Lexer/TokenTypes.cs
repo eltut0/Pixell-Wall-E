@@ -4,7 +4,7 @@ namespace Lexer
     {
 
         public static readonly string[] operators =
-        {"=", "+", "-", "/", "*", "**", "%", "&&", "||", "==", ">", "<", "<=", ">=", "<-"};
+        {"=", "+", "-", "/", "*", "**", "%", "&&", "||", "==", ">", "<", "<=", ">=", "<_"};
 
         public static readonly string[] delimiters =
         {"(", ")", ",", "[", "]", "\"", "#"};
