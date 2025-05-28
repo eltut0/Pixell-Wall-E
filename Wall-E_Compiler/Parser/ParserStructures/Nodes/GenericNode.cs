@@ -4,14 +4,21 @@ namespace Parser
 {
     class GenericNode
     {
-        string Lex { get; set; }
-        List<GenericNode> Children { get; set; } = new List<GenericNode>();
-        public GenericNode(string lex)
+        protected string Lex { get; set; }
+        protected int Line { get; set; }
+        protected List<GenericNode> Children = new List<GenericNode>();
+        public GenericNode(string lex, int line)
         {
             Lex = lex;
+            Line = line;
             Children = new List<GenericNode>();
         }
-        void AddChild(GenericNode node)
+
+        //define generic method for execute the node, override in the child classes
+        protected virtual void ExecuteNode() { }
+
+
+        protected void AddChild(GenericNode node)
         {
             Children.Add(node);
         }

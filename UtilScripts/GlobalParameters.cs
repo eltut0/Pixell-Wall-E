@@ -18,7 +18,7 @@ namespace GlobalParameters
         public const string LoadButtonNode = "/root/Main/HBoxContainer/Menu_Bar/Menu_Bar_Separator/Load_logo_container/Control/LoadButton";
 
         //files folder generic route
-        private static string proyectoPath = System.IO.Directory.GetCurrentDirectory();
+        private static string proyectoPath = Directory.GetCurrentDirectory();
         public static string GenericLocalFolderRoute = Path.Combine(proyectoPath, "Local_Files");
 
         //github link

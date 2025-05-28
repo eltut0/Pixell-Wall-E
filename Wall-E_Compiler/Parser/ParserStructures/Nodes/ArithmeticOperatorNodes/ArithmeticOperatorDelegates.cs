@@ -2,7 +2,7 @@ using System;
 
 namespace Parser
 {
-    class ArithmeticOperatorDelegates
+    partial class ArithmeticOperatorNode : GenericNode
     {
         public delegate int ArithmeticOperator(int x, int y);
 

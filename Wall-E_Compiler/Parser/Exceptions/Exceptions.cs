@@ -5,14 +5,14 @@ namespace Parser
     class Exception
     {
         public static List<Exception> exceptionList = new List<Exception>();
-        ExceptionType type { get; set; }
-        int line { get; set; }
-        string lex { get; set; }
+        ExceptionType Type { get; set; }
+        int Line { get; set; }
+        string Lex { get; set; }
         public Exception(ExceptionType type, int line, string lex)
         {
-            this.type = type;
-            this.line = line;
-            this.lex = lex;
+            Type = type;
+            Line = line;
+            Lex = lex;
             exceptionList.Add(this);
         }
     }
