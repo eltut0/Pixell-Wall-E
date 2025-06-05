@@ -1,1 +1,1 @@
--add info to logo, current version, compiler, code and code editor
+-add a bottom label text for showing the real time exceptions
