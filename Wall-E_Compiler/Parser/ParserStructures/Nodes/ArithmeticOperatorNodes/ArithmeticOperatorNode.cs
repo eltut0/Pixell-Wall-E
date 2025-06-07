@@ -2,8 +2,8 @@ namespace Parser
 {
     partial class ArithmeticOperatorNode : GenericNode
     {
-        protected ArithmeticOperator Operation { get; set; }
-        protected int Result { get; set; }
+        public ArithmeticOperator Operation { get; set; }
+        public int Result { get; set; }
         public ArithmeticOperatorNode(string lex, int Line, ArithmeticOperator arithmeticOperator, ArithmeticOperatorNode firstChild,
         ArithmeticOperatorNode secondChild) : base(lex, Line)
         {
@@ -11,7 +11,7 @@ namespace Parser
             AddChild(firstChild);
             AddChild(secondChild);
         }
-        protected override void ExecuteNode()
+        public override void ExecuteNode()
         {
             if (Children.Count == 0)
             {
@@ -21,7 +21,7 @@ namespace Parser
                 }
                 else
                 {
-                    Exception.exceptionList.Add(new Exception(ExceptionType.Argument, Line, Lex));
+                    _ = new Exception(ExceptionType.Argument, Line, Lex);
                 }
             }
             else

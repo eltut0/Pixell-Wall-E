@@ -7,5 +7,6 @@ namespace Parser
         TypeError,
         LineOvercharge,
         SyntaxError,
+        NotDefinedObject,
     }
 }

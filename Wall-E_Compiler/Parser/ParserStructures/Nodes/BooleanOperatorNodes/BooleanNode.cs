@@ -4,7 +4,6 @@ namespace Parser
 {
     abstract partial class GenericBooleanNode(string lex, int line) : GenericNode(lex, line)
     {
-        public abstract void Execute();
         public bool Result { get; set; }
         protected new List<GenericBooleanNode> Children = [];
     }
@@ -17,11 +16,11 @@ namespace Parser
             Operation = operation;
         }
         public BooleanOperation Operation { get; }
-        public override void Execute()
+        public override void ExecuteNode()
         {
             foreach (var child in Children)
             {
-                child.Execute();
+                child.ExecuteNode();
             }
             Result = Operation(Children[0].Result, Children[1].Result);
         }
@@ -35,7 +34,7 @@ namespace Parser
             Operation = operation;
         }
         public BooleanComparison Operation { get; }
-        public override void Execute()
+        public override void ExecuteNode()
         {
             Result = Operation(((ElementNode)Children[0]).Value, ((ElementNode)Children[1]).Value);
         }
@@ -44,6 +43,6 @@ namespace Parser
     {
         public int Value { get; } = value;
 
-        public override void Execute() { }
+        public override void ExecuteNode() { }
     }
 }
