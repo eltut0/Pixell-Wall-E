@@ -34,7 +34,7 @@ namespace Parser
             }
             SpecialValidation();
         }
-        protected abstract void SpecialValidation();
+        protected virtual void SpecialValidation() { }
 
 
     }
