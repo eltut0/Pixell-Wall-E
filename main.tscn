@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://bvj0oymck53cw"]
+[gd_scene load_steps=24 format=3 uid="uid://bvj0oymck53cw"]
 
 [ext_resource type="Texture2D" uid="uid://c2tuuem4xkh0" path="res://icons/preview.png" id="1_1bvp3"]
 [ext_resource type="Script" uid="uid://c2crsh40kbsr" path="res://Button Scripts/InfoButton.cs" id="1_kek77"]
@@ -18,6 +18,7 @@
 [ext_resource type="Texture2D" uid="uid://ct3auvjb72x4p" path="res://icons/QuestionIcon.svg" id="13_vivmo"]
 [ext_resource type="Script" uid="uid://dgnky2dr25gsd" path="res://Button Scripts/ExitButton.cs" id="16_yaehf"]
 [ext_resource type="Texture2D" uid="uid://cimcn2q7g8lyg" path="res://icons/ExitIcon.png" id="17_074og"]
+[ext_resource type="Script" uid="uid://c5jtwtfnhmbq" path="res://Canvas/Canvas.cs" id="19_82xsv"]
 [ext_resource type="Script" uid="uid://dfx24abmldf2h" path="res://ErrorsTextBox.cs" id="19_cegan"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7dm0k"]
@@ -340,14 +341,18 @@ size_flags_horizontal = 3
 layout_mode = 2
 size_flags_vertical = 3
 
+[node name="Canvas" type="Control" parent="Code_editor_container2/VBoxContainer/VBoxContainer2"]
+layout_mode = 2
+size_flags_vertical = 3
+script = ExtResource("19_82xsv")
+
 [node name="VBoxContainer" type="VBoxContainer" parent="Code_editor_container2/VBoxContainer"]
-custom_minimum_size = Vector2(0, 100)
+custom_minimum_size = Vector2(0, 220)
 layout_mode = 2
 
 [node name="ColorRect" type="ColorRect" parent="Code_editor_container2/VBoxContainer/VBoxContainer"]
-custom_minimum_size = Vector2(0, 100)
 layout_mode = 2
-size_flags_vertical = 10
+size_flags_vertical = 3
 color = Color(0, 0, 0, 1)
 
 [node name="ErrorsText" type="RichTextLabel" parent="Code_editor_container2/VBoxContainer/VBoxContainer/ColorRect"]
@@ -358,3 +363,4 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("19_cegan")
+metadata/_edit_use_anchors_ = true
