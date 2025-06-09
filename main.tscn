@@ -350,7 +350,7 @@ layout_mode = 2
 size_flags_vertical = 10
 color = Color(0, 0, 0, 1)
 
-[node name="RichTextLabel" type="RichTextLabel" parent="Code_editor_container2/VBoxContainer/VBoxContainer/ColorRect"]
+[node name="ErrorsText" type="RichTextLabel" parent="Code_editor_container2/VBoxContainer/VBoxContainer/ColorRect"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0

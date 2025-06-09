@@ -10,10 +10,8 @@ public partial class ErrorsTextBox : RichTextLabel
 	}
 	public override void _Process(double delta)
 	{
-		if (!(Exception.exceptionList.Count > 0))
-		{
-			return;
-		}
+		if (!(Exception.exceptionList.Count > 0)) { return; }
+
 		StringBuilder exceptionsText = new();
 		exceptionsText.Append("Exceptions: \n");
 		foreach (var exception in Exception.exceptionList)

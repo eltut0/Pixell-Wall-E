@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace Parser
 {
-    class GetColorCount(string lex, int line, FunctionType functionType, List<GenericNode> arguments) : GenericFunction(lex, line, functionType, arguments)
+    class IsCanvasColor(string lex, int line, FunctionType functionType, List<GenericNode> arguments) : GenericFunction(lex, line, functionType, arguments)
     {
         public int Result { get; private set; }
         protected override void SpecialValidation()
@@ -25,10 +25,9 @@ namespace Parser
         public override void ExecuteNode()
         {
             foreach (var node in Arguments) { node.ExecuteNode(); }
-            Result = GetColorCountFunc(Arguments[0].Lex, ((ArithmeticOperatorNode)Arguments[1]).Result, ((ArithmeticOperatorNode)Arguments[2]).Result,
-            ((ArithmeticOperatorNode)Arguments[3]).Result, ((ArithmeticOperatorNode)Arguments[4]).Result);
+            Result = IsCanvasColorFunc(Arguments[0].Lex, ((ArithmeticOperatorNode)Arguments[1]).Result, ((ArithmeticOperatorNode)Arguments[2]).Result);
         }
-        private static int GetColorCountFunc(string color, int x1, int y1, int x2, int y2)
+        private static int IsCanvasColorFunc(string color, int x, int y)
         {
             throw new NotImplementedException();
         }

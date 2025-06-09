@@ -2,7 +2,7 @@ using System.Collections.Generic;
 
 namespace Parser
 {
-    abstract partial class GenericBooleanNode(string lex, int line) : GenericNode(lex, line)
+    public abstract partial class GenericBooleanNode(string lex, int line) : GenericNode(lex, line)
     {
         public bool Result { get; set; }
         protected new List<GenericBooleanNode> Children = [];

@@ -2,7 +2,7 @@ using System.Collections.Generic;
 
 namespace Parser
 {
-    class GenericNode(string lex, int line)
+    public class GenericNode(string lex, int line)
     {
         public string Lex { get; set; } = lex;
         public int Line { get; set; } = line;
