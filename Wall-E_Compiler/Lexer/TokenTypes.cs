@@ -1,6 +1,6 @@
 namespace Lexer
 {
-    class TokenTypes
+    public class TokenTypes
     {
 
         public static readonly string[] operators =

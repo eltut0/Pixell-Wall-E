@@ -4,7 +4,7 @@ using System.Collections.Generic;
 
 namespace Lexer
 {
-    partial class Lexer
+    public partial class Lexer
     {
         public static List<Token> Tokens = [];
         private static readonly string delimitters = @"([(),""\[\] #])";
@@ -12,6 +12,7 @@ namespace Lexer
         {
             Tokens.Clear();
             int count = 0;
+
             foreach (string line in code)
             {
                 LineAnalisis(line, count);
@@ -30,6 +31,12 @@ namespace Lexer
 
         private static void TokenClasification(string[] tokens, int line)
         {
+            if (tokens.Length == 0) { return; }
+            if (tokens[0] == "#" && tokens[tokens.Length - 1] == "#")
+            {
+                //ignore comments
+                return;
+            }
             int position = 0;
             foreach (string token in tokens)
             {

@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=3 uid="uid://bvj0oymck53cw"]
+[gd_scene load_steps=25 format=3 uid="uid://bvj0oymck53cw"]
 
 [ext_resource type="Texture2D" uid="uid://c2tuuem4xkh0" path="res://icons/preview.png" id="1_1bvp3"]
 [ext_resource type="Script" uid="uid://c2crsh40kbsr" path="res://Button Scripts/InfoButton.cs" id="1_kek77"]
@@ -20,6 +20,7 @@
 [ext_resource type="Texture2D" uid="uid://cimcn2q7g8lyg" path="res://icons/ExitIcon.png" id="17_074og"]
 [ext_resource type="Script" uid="uid://c5jtwtfnhmbq" path="res://Canvas/Canvas.cs" id="19_82xsv"]
 [ext_resource type="Script" uid="uid://dfx24abmldf2h" path="res://ErrorsTextBox.cs" id="19_cegan"]
+[ext_resource type="Script" uid="uid://umck3lp7v28k" path="res://RealTimeExceptionsControl.cs" id="21_getpj"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7dm0k"]
 bg_color = Color(0.101961, 0.054902, 0.290196, 1)
@@ -364,3 +365,9 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("19_cegan")
 metadata/_edit_use_anchors_ = true
+
+[node name="RealTimeExceptionsControl" type="Control" parent="."]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("21_getpj")

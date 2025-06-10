@@ -2,7 +2,7 @@ using System.Collections.Generic;
 
 namespace Lexer
 {
-    class Token
+    public class Token
     {
         public TokenType TokenType { get; private set; }
         public string Lex { get; private set; }
@@ -19,7 +19,7 @@ namespace Lexer
         }
     }
 
-    enum TokenType
+    public enum TokenType
     {
         KeyWord,
         Identifier,

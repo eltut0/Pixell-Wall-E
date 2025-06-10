@@ -25,13 +25,17 @@ public partial class SaveCodeButton : Button
 
 	public static void InteractiveWindow(SaveCodeButton localnode)
 	{
-		var inputwindow = new Window();
-		inputwindow.Title = "Save file";
-		inputwindow.Size = new Vector2I(300, 150);
-		inputwindow.Unresizable = true;
+		var inputwindow = new Window
+		{
+			Title = "Save file",
+			Size = new Vector2I(300, 100),
+			Unresizable = true
+		};
 
-		var vbox = new VBoxContainer();
-		vbox.Size = inputwindow.Size;
+		var vbox = new VBoxContainer
+		{
+			Size = inputwindow.Size
+		};
 
 		var label = new Label
 		{
@@ -42,13 +46,13 @@ public partial class SaveCodeButton : Button
 		var input = new LineEdit
 		{
 			PlaceholderText = $"Actually: {GlobalParameters.ProjectGlobalParameters.ActualFileLocation}",
-			SizeFlagsHorizontal = Control.SizeFlags.ExpandFill
+			SizeFlagsHorizontal = SizeFlags.ExpandFill
 		};
 
 		var button = new Button
 		{
 			Text = "Done",
-			SizeFlagsHorizontal = Control.SizeFlags.ShrinkCenter
+			SizeFlagsHorizontal = SizeFlags.ShrinkCenter
 		};
 
 		vbox.AddChild(label);

@@ -1,7 +1,0 @@
-namespace Parser
-{
-    class AST
-    {
-
-    }
-}

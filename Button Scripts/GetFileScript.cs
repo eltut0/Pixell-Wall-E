@@ -33,27 +33,26 @@ public partial class GetFileScript : Button
 		TempFileName = null;
 		try
 		{
-			using (StreamReader sr = new StreamReader(route))
+			using StreamReader sr = new(route);
+			GlobalParameters.ProjectGlobalParameters.CanvasSize = int.Parse(sr.ReadLine());
+			StringBuilder sb = new();
+			do
 			{
-				GlobalParameters.ProjectGlobalParameters.CanvasSize = int.Parse(sr.ReadLine());
-				StringBuilder sb = new StringBuilder();
-				do
+				string line = sr.ReadLine();
+
+				if (line == null)
 				{
-					string line = sr.ReadLine();
+					break;
+				}
 
-					if (line == null)
-					{
-						break;
-					}
+				sb.Append($"{line}\n");
 
-					sb.Append($"{line}\n");
+			} while (true);
 
-				} while (true);
+			sr.Close();
+			sb.Remove(sb.Length - 1, 1);
 
-				sr.Close();
-
-				SetScript(sb.ToString(), localnode);
-			}
+			SetScript(sb.ToString(), localnode);
 		}
 		catch (FileNotFoundException)
 		{
@@ -71,13 +70,17 @@ public partial class GetFileScript : Button
 
 	private static void DisplayInputWindow(GetFileScript localnode)
 	{
-		var inputwindow = new Window();
-		inputwindow.Title = "Save file";
-		inputwindow.Size = new Vector2I(300, 150);
-		inputwindow.Unresizable = true;
+		var inputwindow = new Window
+		{
+			Title = "Save file",
+			Size = new Vector2I(300, 150),
+			Unresizable = true
+		};
 
-		var vbox = new VBoxContainer();
-		vbox.Size = inputwindow.Size;
+		var vbox = new VBoxContainer
+		{
+			Size = inputwindow.Size
+		};
 		var hbox = new HBoxContainer();
 
 		var label = new Label
@@ -127,14 +130,14 @@ public partial class GetFileScript : Button
 			inputwindow.QueueFree();
 		};
 
-		inputwindow.CloseRequested += () => inputwindow.QueueFree();
+		inputwindow.CloseRequested += inputwindow.QueueFree;
 
 		inputwindow.PopupCentered();
 	}
 
 	private static void FileListingWindow()
 	{
-		StringBuilder sb = new StringBuilder();
+		StringBuilder sb = new();
 
 		string[] files = Directory.GetFiles(GlobalParameters.ProjectGlobalParameters.GenericLocalFolderRoute);
 		int count = 0;
@@ -144,16 +147,17 @@ public partial class GetFileScript : Button
 			foreach (string file in files)
 			{
 				string[] splittedfile = file.Split('/');
-				sb.Append($"{splittedfile[splittedfile.Length - 1]}\n");
+				sb.Append($"{splittedfile[^1]}\n");
 
-				if (splittedfile[splittedfile.Length - 1].Length > maxlenght)
+				if (splittedfile[^1].Length > maxlenght)
 				{
-					maxlenght = splittedfile[splittedfile.Length - 1].Length;
+					maxlenght = splittedfile[^1].Length;
 				}
 				count++;
 			}
+			sb.Remove(sb.Length - 1, 1);
 
-			InfoWindow.DisplayInfoWindow("Files", sb.ToString(), 150 + (maxlenght * 10), count * 50);
+			InfoWindow.DisplayInfoWindow("Files", sb.ToString(), 160 + (maxlenght * 10), 40 + count * 25);
 		}
 		else
 		{
