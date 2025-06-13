@@ -2,14 +2,10 @@ using System.Collections.Generic;
 
 namespace Parser
 {
-    class Variable : GenericNode
+    class Variable(string lex, int line) : GenericNode(lex, line)
     {
         public int Result { get; private set; }
         public static readonly Dictionary<string, int> VariablesDic = [];
-        public Variable(string lex, int line, int value) : base(lex, line)
-        {
-            VariablesDic[lex] = value;
-        }
 
         public override void ExecuteNode()
         {

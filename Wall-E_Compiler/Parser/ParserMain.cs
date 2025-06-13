@@ -1,5 +1,4 @@
 using System.Collections.Generic;
-using System.Text;
 using Godot;
 using Lexer;
 using ParserLibrary;
@@ -15,7 +14,7 @@ namespace Parser
 
             if (convertedList.Length == 0) { return; }
 
-            Library.SpecialFirstLine(convertedList[0]);
+            AST.Add(Library.SpecialFirstLine(convertedList[0]));
 
             for (int i = 1; i < convertedList.Length; i++)
             {
@@ -23,7 +22,7 @@ namespace Parser
                 AST.Add(aSTElement);
             }
 
-            //call interprete
+            //call interpreter
         }
     }
 }

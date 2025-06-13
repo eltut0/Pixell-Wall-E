@@ -6,7 +6,7 @@ namespace Parser
     {
 
 
-        public static readonly Dictionary<FunctionType, int> ArgsCount = new Dictionary<FunctionType, int>()
+        public static readonly Dictionary<FunctionType, int> ArgsCount = new()
         {
             { FunctionType.Spawn,2},
             { FunctionType.Color,1},

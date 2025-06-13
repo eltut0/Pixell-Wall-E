@@ -18,9 +18,10 @@ public partial class CodeEditord : CodeEdit
 		{
 
 			{"GoTo", new Color("#FF79C6")},
+			{"_", new Color("#FF79C6")},
 
 			//yellow for all related with walle
-			{"Spawn", new Color("#FFFF00")},
+			{ "Spawn", new Color("#FFFF00")},
 			{"Color", new Color("#FFFF00")},
 			{"Size", new Color("#FFFF00")},
 
@@ -45,7 +46,7 @@ public partial class CodeEditord : CodeEdit
 			{"candela", new Color("#FFA500")},
 		};
 
-		syntaxhighlight.SymbolColor = new Color("FFFFFF");
+		syntaxhighlight.SymbolColor = new Color("#FF79C6");
 		syntaxhighlight.NumberColor = new Color("#BD93F9");
 		syntaxhighlight.AddColorRegion("\"", "\"", new Color("#CE9178"));
 		syntaxhighlight.AddColorRegion("#", "#", new Color("#666666"));

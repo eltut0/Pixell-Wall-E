@@ -7,12 +7,12 @@ namespace Parser
         public string Lex { get; set; } = lex;
         public int Line { get; set; } = line;
         public bool IsString { get; set; }
-        protected List<GenericNode> Children = [];
+        public List<GenericNode> Children = [];
 
         public virtual void ExecuteNode() { }
 
 
-        protected void AddChild(GenericNode node)
+        public void AddChild(GenericNode node)
         {
             if (node != null)
             {

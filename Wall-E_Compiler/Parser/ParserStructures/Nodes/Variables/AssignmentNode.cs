@@ -6,7 +6,7 @@ namespace Parser
         public override void ExecuteNode()
         {
             VarValue.ExecuteNode();
-            _ = new Variable(Lex, Line, VarValue.Result);
+            Variable.VariablesDic[Lex] = VarValue.Result;
         }
     }
 }
