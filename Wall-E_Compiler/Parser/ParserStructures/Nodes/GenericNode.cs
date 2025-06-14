@@ -7,6 +7,7 @@ namespace Parser
         public string Lex { get; set; } = lex;
         public int Line { get; set; } = line;
         public bool IsString { get; set; }
+        public int Result { get; set; }
         public List<GenericNode> Children = [];
 
         public virtual void ExecuteNode() { }

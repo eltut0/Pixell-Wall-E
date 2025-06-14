@@ -38,9 +38,9 @@ public partial class CodeEditord : CodeEdit
 			{"GetColorCount", new Color("#4A6FA5")},
 
 			//red for boolean operators
-			{"isBrushColor", new Color("#8B0000")},
-			{"isBrushSize", new Color("#8B0000")},
-			{"isCanvasColor", new Color("#8B0000")},
+			{"IsBrushColor", new Color("#8B0000")},
+			{"IsBrushSize", new Color("#8B0000")},
+			{"IsCanvasColor", new Color("#8B0000")},
 
 			//candela 
 			{"candela", new Color("#FFA500")},

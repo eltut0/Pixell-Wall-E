@@ -2,7 +2,7 @@ namespace ParserLibrary
 {
     public static partial class Library
     {
-        private static readonly string[] Functions = [
+        public static readonly string[] Functions = [
             "Spawn",
             "Color",
             "Size",
@@ -19,14 +19,17 @@ namespace ParserLibrary
             "IsCanvasColor"
         ];
 
-        private static readonly string[] BooleanOperators = [
+        public static readonly string[] BooleanOperators = [
             "||", "&&"
         ];
-        private static readonly string[] ArithmeticOperators = [
+        public static readonly string[] BooleanComparators = [
+            ">", "<", ">=", "<=", "=="
+        ];
+        public static readonly string[] ArithmeticOperators = [
             "+", "-", "*", "/", "%", "**"
         ];
 
-        private static readonly string[] VoidFunctions = [
+        public static readonly string[] VoidFunctions = [
             "Spawn",
             "Color",
             "Size",
@@ -36,7 +39,7 @@ namespace ParserLibrary
             "Fill",
         ];
 
-        private static readonly string[] ReturnFunctions = [
+        public static readonly string[] ReturnFunctions = [
             "GetActualX",
             "GetActualY",
             "GetCanvasSize",

@@ -3,9 +3,9 @@ namespace Parser
     partial class ArithmeticOperatorNode : GenericNode
     {
         public ArithmeticOperator Operation { get; set; }
-        public int Result { get; set; }
-        public ArithmeticOperatorNode(string lex, int Line, ArithmeticOperator arithmeticOperator, ArithmeticOperatorNode firstChild,
-        ArithmeticOperatorNode secondChild) : base(lex, Line)
+        public new int Result { get; set; }
+        public ArithmeticOperatorNode(string lex, int Line, ArithmeticOperator arithmeticOperator, GenericNode firstChild,
+        GenericNode secondChild) : base(lex, Line)
         {
             Operation = arithmeticOperator;
             AddChild(firstChild);

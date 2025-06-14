@@ -1,12 +1,14 @@
+using ParserLibrary;
+
 namespace Parser
 {
-    class AssignmentNode(string varKey, int line, ArithmeticOperatorNode varValue) : GenericNode(varKey, line)
+    class AssignmentNode(string varKey, int line, GenericNode varValue) : GenericNode(varKey, line)
     {
-        public ArithmeticOperatorNode VarValue { get; private set; } = varValue;
+        public GenericNode VarValue { get; private set; } = varValue;
         public override void ExecuteNode()
         {
             VarValue.ExecuteNode();
-            Variable.VariablesDic[Lex] = VarValue.Result;
+            Variable.VariablesDic[Lex] = ((ArithmeticOperatorNode)VarValue).Result; //every possible input type contains a definition for Result
         }
     }
 }

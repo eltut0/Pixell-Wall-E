@@ -1,9 +1,9 @@
+using Godot;
 using Lexer;
 using Parser;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Security.Cryptography;
 using System.Text;
 using Exception = Parser.Exception;
 
@@ -35,15 +35,20 @@ namespace ParserLibrary
                     {
                         sb.Append(args[i].Lex + " ");
                     }
-                    return new GenericNode(sb.ToString(), args[0].Line);
+                    GenericNode gn = new(sb.ToString(), args[0].Line)
+                    {
+                        IsString = true
+                    };
+                    return gn;
                 }
             }
 
-            return null;
+            return BuildArithmeticNode(args);
         }
 
         private static GenericNode BuildArithmeticNode(Token[] args)
         {
+            if (args.Length == 0) { _ = new Exception(ExceptionType.Argument, -1, "Missing element"); return null; }
             if (args.Any(c => c.Lex == "**" || c.Lex == "%" || c.Lex == "*" || c.Lex == "/" || c.Lex == "+" || c.Lex == "-"))
             {
                 int operatorPosition = -1;
@@ -105,12 +110,12 @@ namespace ParserLibrary
 
                     if (operatorPosition == 0 || operatorPosition == args.Length - 1)
                     {
-                        _ = new Exception(ExceptionType.Argument, args[0].Line, "Missing arithmetic operation or variable reference");
+                        _ = new Exception(ExceptionType.Argument, args[0].Line + 1, "Missing arithmetic operation or variable reference");
                     }//this case will call another node with an empty tokens array
 
                     GenericNode _left = BuildArgument(args[..operatorPosition]);
                     GenericNode _right = BuildArgument(args[(operatorPosition + 1)..]);
-                    return new ArithmeticOperatorNode(args[0].Lex, args[0].Line, operation, (ArithmeticOperatorNode)_left, (ArithmeticOperatorNode)_right);
+                    return new ArithmeticOperatorNode(args[0].Lex, args[0].Line, operation, _left, _right);
                 }
 
             }
@@ -137,10 +142,107 @@ namespace ParserLibrary
                         return ConvertLineToTree(args); //recursively call and will make a function node
                     }
                 }
-                _ = new Exception(ExceptionType.SyntaxError, args[0].Line, "Delimiters expected");
+                _ = new Exception(ExceptionType.SyntaxError, args[0].Line + 1, "Delimiters expected");
             }
 
-            _ = new Exception(ExceptionType.Argument, args[0].Line, "Unexpected argument");
+            _ = new Exception(ExceptionType.Argument, args[0].Line + 1, "Unexpected argument");
+            return new GenericNode("", args[0].Line);
+        }
+
+        private static GenericBooleanNode BuildBooleanNode(Token[] args)
+        {
+            int index = -1;
+
+            for (int i = 0; i < args.Length; i++)
+            {
+                if (args[i].Lex == "||")
+                {
+                    index = i;
+                    break;
+                }
+            }
+
+            if (index == -1)
+            {
+                for (int i = 0; i < args.Length; i++)
+                {
+                    if (args[i].Lex == "&&")
+                    {
+                        index = i;
+                        break;
+                    }
+                }
+            }
+
+            if (index == -1)
+            {
+                //return new comparison node
+                return GenerateComparisonNode(args);
+            }
+
+            if (index != -1)
+            {
+                GenericBooleanNode.BooleanOperation operation = null;
+                switch (args[index].Lex)
+                {
+                    case "&&":
+                        operation = GenericBooleanNode.And;
+                        break;
+                    case "||":
+                        operation = GenericBooleanNode.Or;
+                        break;
+                }
+
+                if (index == 0 || index == args.Length - 1)
+                {
+                    _ = new Exception(ExceptionType.Argument, args[0].Line + 1, "Missing arithmetic operation or variable reference");
+                }//this case will call another node with an empty tokens array
+
+                GenericBooleanNode _left = BuildBooleanNode(args[..index]);
+                GenericBooleanNode _right = BuildBooleanNode(args[(index + 1)..]);
+                return new LogicalNode(args[0].Lex, args[0].Line, _left, _right, operation);
+            }
+
+            _ = new Exception(ExceptionType.Argument, args[0].Line + 1, "Error at the logical argument for the GoTo");
+            return new LogicalNode("", -1, null, null, null);
+
+        }
+
+        private static ComparisonNode GenerateComparisonNode(Token[] args)
+        {
+            if (args.Any(x => BooleanComparators.Contains(x.Lex)))
+            {
+                for (int i = 0; i < args.Length; i++)
+                {
+                    if (BooleanComparators.Contains(args[i].Lex))
+                    {
+                        GenericNode _left = BuildArithmeticNode(args[..i]);
+                        GenericNode _right = BuildArithmeticNode(args[(i + 1)..]);
+                        GenericBooleanNode.BooleanComparison operation = null;
+                        switch (args[i].Lex)
+                        {
+                            case ">":
+                                operation = GenericBooleanNode.GreaterThan;
+                                break;
+                            case "<":
+                                operation = GenericBooleanNode.LessThan;
+                                break;
+                            case ">=":
+                                operation = GenericBooleanNode.GreaterOrEqual;
+                                break;
+                            case "<=":
+                                operation = GenericBooleanNode.LessOrEqual;
+                                break;
+                            case "==":
+                                operation = GenericBooleanNode.Equal;
+                                break;
+                        }
+
+                        return new ComparisonNode(args[i].Lex, args[i].Line, (ArithmeticOperatorNode)_left, (ArithmeticOperatorNode)_right, operation);
+                    }
+                }
+            }
+            _ = new Exception(ExceptionType.TypeError, args[0].Line + 1, "Cannot apply a boolean operation to an arithmetic expression");
             return null;
         }
 

@@ -1,6 +1,5 @@
 using System.Collections.Generic;
 using System.Linq;
-using System.Reflection.Metadata;
 using Godot;
 using Lexer;
 using Parser;
@@ -28,11 +27,10 @@ namespace ParserLibrary
             }
 
             GenericNode[] args = ProcessFunctionArgument(tokens[2..^1]);
-            GenericNode gn = new(tokens[0].Lex, tokens[0].Line);
-            foreach (GenericNode arg in args)
-            {
-                gn.AddChild(arg);
-            }
+            TwoIntsArgument gn = new(tokens[0].Lex, tokens[0].Line, FunctionType.Spawn, [.. args]);
+
+            gn.ValidateArgument();
+
             return gn;
         }
         public static GenericNode ConvertLineToTree(Token[] tokens)
@@ -59,30 +57,54 @@ namespace ParserLibrary
                         _ = new Exception(ExceptionType.Argument, tokens[0].Line + 1, "Delimiters expected");
                         return null;
                     }
-                    GenericNode[] args = ProcessFunctionArgument(tokens[2..^1]); //ignoring function and delimiters for the tokens array
 
-                    return BuildFunction(args[0].Lex, args[0].Line, args);
+                    GenericNode[] args = [];
+
+                    if (tokens.Length > 3)
+                    {
+                        args = ProcessFunctionArgument(tokens[2..^1]); //ignoring function and delimiters for the tokens array
+                    }
+
+                    GenericFunction gn = BuildFunction(tokens[0].Lex, tokens[0].Line, args);
+                    gn.ValidateArgument();
+                    return gn;
+                }
+
+                if (tokens[1].Lex == "<_")
+                {
+                    GenericNode an = BuildArgument(tokens[2..]);
+                    if (an == null) { return new("", -1); }
+                    if (an.GetType() != typeof(ArithmeticOperatorNode) && an.GetType() != typeof(Variable) && an.GetType() != typeof(GetColorCount) &&
+                    an.GetType() != typeof(IsCanvasColor) && an.GetType() != typeof(NonArgumentReturn) && an.GetType() != typeof(OneIntArgumentReturn) &&
+                    an.GetType() != typeof(OneStringArgumentReturn))
+                    {
+                        _ = new Exception(ExceptionType.Argument, tokens[0].Line + 1, "Invalid assignment");
+                    }
+
+                    return new AssignmentNode(tokens[0].Lex, tokens[0].Line, an);
                 }
             }
-            else
+            else if (tokens.Length != 0)
             {
                 _ = new Exception(ExceptionType.Argument, tokens[0].Line + 1, "Delimiters expected");
             }
 
-            return null;
+            _ = new Exception(ExceptionType.Argument, -1, "Delimiters expected"); ;
+
+            return new("", -1);
         }
 
         private static GenericFunction BuildFunction(string lex, int line, GenericNode[] args)
         {
             return lex switch
             {
-                "GetActualX" => new NonArgumentReturn(lex, line, FunctionType.GetActualX, null),
-                "GetActualY" => new NonArgumentReturn(lex, line, FunctionType.GetActualY, null),
-                "GetCanvasSize" => new NonArgumentReturn(lex, line, FunctionType.GetCanvasSize, null),
-                "GetColorCount" => new NonArgumentReturn(lex, line, FunctionType.GetColorCount, [.. args]),
-                "IsBrushColor" => new NonArgumentReturn(lex, line, FunctionType.IsBrushColor, [.. args]),
-                "IsBrushSize" => new NonArgumentReturn(lex, line, FunctionType.IsBrushSize, [.. args]),
-                "IsCanvasColor" => new NonArgumentReturn(lex, line, FunctionType.IsCanvasColor, [.. args]),
+                "GetActualX" => new NonArgumentReturn(lex, line, FunctionType.GetActualX, [.. args]),
+                "GetActualY" => new NonArgumentReturn(lex, line, FunctionType.GetActualY, [.. args]),
+                "GetCanvasSize" => new NonArgumentReturn(lex, line, FunctionType.GetCanvasSize, [.. args]),
+                "GetColorCount" => new GetColorCount(lex, line, FunctionType.GetColorCount, [.. args]),
+                "IsBrushColor" => new OneStringArgumentReturn(lex, line, FunctionType.IsBrushColor, [.. args]),
+                "IsBrushSize" => new OneIntArgumentReturn(lex, line, FunctionType.IsBrushSize, [.. args]),
+                "IsCanvasColor" => new IsCanvasColor(lex, line, FunctionType.IsCanvasColor, [.. args]),
                 _ => null,
             };
         }

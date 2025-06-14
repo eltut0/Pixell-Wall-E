@@ -8,7 +8,7 @@ namespace Parser
         public int Result { get; private set; }
         protected override void SpecialValidation()
         {
-            GenericNode[] temp = [.. Arguments];
+            GenericNode[] temp = [.. Children];
             if (!temp[0].IsString)
             {
                 _ = new Exception(ExceptionType.Argument, Line, "First argument requires type string");
@@ -24,8 +24,8 @@ namespace Parser
         }
         public override void ExecuteNode()
         {
-            foreach (var node in Arguments) { node.ExecuteNode(); }
-            Result = IsCanvasColorFunc(Arguments[0].Lex, ((ArithmeticOperatorNode)Arguments[1]).Result, ((ArithmeticOperatorNode)Arguments[2]).Result);
+            foreach (var node in Children) { node.ExecuteNode(); }
+            Result = IsCanvasColorFunc(Children[0].Lex, ((ArithmeticOperatorNode)Children[1]).Result, ((ArithmeticOperatorNode)Children[2]).Result);
         }
         private static int IsCanvasColorFunc(string color, int x, int y)
         {

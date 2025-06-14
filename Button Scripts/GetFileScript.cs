@@ -30,6 +30,7 @@ public partial class GetFileScript : Button
 	private static void GetTheScript(Node localnode)
 	{
 		string route = Path.Combine(GlobalParameters.ProjectGlobalParameters.GenericLocalFolderRoute, $"{TempFileName}.pw");
+		GlobalParameters.ProjectGlobalParameters.ActualFileLocation = TempFileName;
 		TempFileName = null;
 		try
 		{

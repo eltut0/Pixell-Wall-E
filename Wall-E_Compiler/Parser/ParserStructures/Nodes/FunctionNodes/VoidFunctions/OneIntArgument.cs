@@ -9,7 +9,7 @@ namespace Parser
         private readonly Operation _operation = _operations[functionType];
         protected override void SpecialValidation()
         {
-            if (!(Arguments[0].GetType() == typeof(Variable) || Arguments[0].GetType() == typeof(ArithmeticOperatorNode)))
+            if (!(Children[0].GetType() == typeof(Variable) || Children[0].GetType() == typeof(ArithmeticOperatorNode)))
             {
                 _ = new Exception(ExceptionType.Argument, Line, $"Non valid argument");
                 return;
@@ -17,8 +17,8 @@ namespace Parser
         }
         public override void ExecuteNode()
         {
-            Arguments[0].ExecuteNode();
-            _operation(((ArithmeticOperatorNode)Arguments[0]).Result);
+            Children[0].ExecuteNode();
+            _operation(((ArithmeticOperatorNode)Children[0]).Result);
         }
         private static readonly Dictionary<FunctionType, Operation> _operations = new()
         {

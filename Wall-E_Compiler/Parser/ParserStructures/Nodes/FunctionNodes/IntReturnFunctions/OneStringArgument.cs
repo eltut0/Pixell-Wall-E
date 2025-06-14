@@ -14,7 +14,7 @@ namespace Parser
         };
         protected override void SpecialValidation()
         {
-            foreach (var arg in Arguments)
+            foreach (var arg in Children)
             {
                 if (!arg.IsString)
                 {
@@ -25,8 +25,8 @@ namespace Parser
         }
         public override void ExecuteNode()
         {
-            Arguments[0].ExecuteNode();
-            Result = _Operation(Arguments[0].Lex);
+            Children[0].ExecuteNode();
+            Result = _Operation(Children[0].Lex);
         }
 
         static int IsBrushColor(string x)

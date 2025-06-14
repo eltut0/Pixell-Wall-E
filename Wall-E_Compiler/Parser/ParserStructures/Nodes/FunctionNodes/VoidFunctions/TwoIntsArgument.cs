@@ -1,15 +1,21 @@
 using System;
 using System.Collections.Generic;
+using Godot;
 
 namespace Parser
 {
-    class TowIntsArgument(string lex, int line, FunctionType functionType, List<GenericNode> arguments) : GenericFunction(lex, line, functionType, arguments)
+    class TwoIntsArgument(string lex, int line, FunctionType functionType, List<GenericNode> arguments) : GenericFunction(lex, line, functionType, arguments)
     {
         private delegate void Operation(int x, int y);
         private readonly Operation _operation = _operations[functionType];
         protected override void SpecialValidation()
         {
-            foreach (var arg in Arguments)
+            if (Children.Count == 0 || Children == null)
+            {
+                _ = new Exception(ExceptionType.Argument, Line, $"Non valid argument");
+                return;
+            }
+            foreach (var arg in Children)
             {
                 if (!(arg.GetType() == typeof(Variable) || arg.GetType() == typeof(ArithmeticOperatorNode)))
                 {
@@ -20,11 +26,11 @@ namespace Parser
         }
         public override void ExecuteNode()
         {
-            foreach (var arg in Arguments)
+            foreach (var arg in Children)
             {
                 arg.ExecuteNode();
             }
-            _operation(((ArithmeticOperatorNode)Arguments[0]).Result, ((ArithmeticOperatorNode)Arguments[1]).Result);
+            _operation(((ArithmeticOperatorNode)Children[0]).Result, ((ArithmeticOperatorNode)Children[1]).Result);
         }
         private static readonly Dictionary<FunctionType, Operation> _operations = new()
         {

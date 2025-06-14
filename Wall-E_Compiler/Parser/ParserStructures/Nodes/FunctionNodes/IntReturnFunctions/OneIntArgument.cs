@@ -14,7 +14,7 @@ namespace Parser
         };
         protected override void SpecialValidation()
         {
-            foreach (var arg in Arguments)
+            foreach (var arg in Children)
             {
                 if (!(arg.GetType() == typeof(Variable) || arg.GetType() == typeof(ArithmeticOperatorNode)))
                 {
@@ -25,8 +25,8 @@ namespace Parser
         }
         public override void ExecuteNode()
         {
-            Arguments[0].ExecuteNode();
-            Result = _Operation(((ArithmeticOperatorNode)Arguments[0]).Result);
+            Children[0].ExecuteNode();
+            Result = _Operation(((ArithmeticOperatorNode)Children[0]).Result);
         }
 
         static int IsBrushSize(int k)

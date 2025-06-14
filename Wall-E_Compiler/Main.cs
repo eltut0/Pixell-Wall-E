@@ -7,7 +7,7 @@ namespace Compiler
         public static void RegularCompilationStart(string[] code)
         {
             Lexer.Lexer.InitializeLex(code);
-            Parser.Parser.ParserInit();
+            Parser.Parser.ParserInit(true);
         }
     }
 }
