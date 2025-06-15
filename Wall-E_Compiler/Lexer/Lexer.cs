@@ -7,7 +7,8 @@ namespace Lexer
     public partial class Lexer
     {
         public static List<Token> Tokens = [];
-        private static readonly string delimitters = @"([(),""\[\] #])";
+        private static readonly string delimiters =
+    @"(&&|\|\||<=|>=|==|<_|!=|\+{1,2}|\-{1,2}|[()+*\/%&|^!<>=?:,\[\]{}"" #])";
         public static void InitializeLex(string[] code)
         {
             Tokens.Clear();
@@ -23,7 +24,7 @@ namespace Lexer
         private static void LineAnalisis(string codeLine, int line)
         {
             string input = codeLine;
-            string[] tokens = [.. Regex.Split(input, delimitters).Where(token =>
+            string[] tokens = [.. Regex.Split(input, delimiters).Where(token =>
             !string.IsNullOrWhiteSpace(token))];
 
             TokenClasification(tokens, line);
@@ -32,7 +33,7 @@ namespace Lexer
         private static void TokenClasification(string[] tokens, int line)
         {
             if (tokens.Length == 0) { return; }
-            if (tokens[0] == "#" && tokens[tokens.Length - 1] == "#")
+            if (tokens[0] == "#" && tokens[^1] == "#")
             {
                 //ignore comments
                 return;
@@ -62,6 +63,8 @@ namespace Lexer
                 }
 
                 _ = new Token(TokenType.Identifier, token, line, position);
+
+                position++;
             }
         }
     }

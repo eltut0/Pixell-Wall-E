@@ -238,7 +238,7 @@ namespace ParserLibrary
                                 break;
                         }
 
-                        return new ComparisonNode(args[i].Lex, args[i].Line, (ArithmeticOperatorNode)_left, (ArithmeticOperatorNode)_right, operation);
+                        return new ComparisonNode(args[i].Lex, args[i].Line, _left, _right, operation);
                     }
                 }
             }

@@ -4,12 +4,12 @@ namespace Lexer
     {
 
         public static readonly string[] operators =
-        {"=", "+", "-", "/", "*", "**", "%", "&&", "||", "==", ">", "<", "<=", ">=", "<_"};
+        ["=", "+", "-", "/", "*", "**", "%", "&&", "||", "==", ">", "<", "<=", ">=", "<_"];
 
         public static readonly string[] delimiters =
-        {"(", ")", ",", "[", "]", "\"", "#"};
+        ["(", ")", ",", "[", "]", "\"", "#"];
 
         public static readonly string[] keyWords =
-        {"GoTo"};
+        ["GoTo"];
     }
 }

@@ -11,7 +11,7 @@ public partial class CodeEditord : CodeEdit
 	{
 		code ??= GetNode<CodeEdit>(GlobalParameters.ProjectGlobalParameters.CodeEditorNode);
 
-		CodeHighlighter syntaxhighlight = new CodeHighlighter();
+		CodeHighlighter syntaxhighlight = new();
 		SyntaxHighlighter = syntaxhighlight;
 
 		syntaxhighlight.KeywordColors = (Godot.Collections.Dictionary)new Godot.Collections.Dictionary<string, Color>()

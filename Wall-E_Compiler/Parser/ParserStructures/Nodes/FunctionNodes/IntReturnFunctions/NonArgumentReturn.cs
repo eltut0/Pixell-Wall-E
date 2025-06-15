@@ -5,7 +5,7 @@ namespace Parser
 {
     class NonArgumentReturn(string lex, int line, FunctionType functionType, List<GenericNode> arguments) : GenericFunction(lex, line, functionType, arguments)
     {
-        public int Result { get; private set; }
+        public new int Result { get; private set; }
         protected delegate int Operation();
         private readonly Operation _Operation = _operations[functionType];
         private static readonly Dictionary<FunctionType, Operation> _operations = new()

@@ -1,39 +1,42 @@
 using Godot;
 using System;
 
-public partial class Canvas : Control
+namespace Canvas
 {
-	private Color[,] colors;
-
-	public void SetColors(Color[,] colorArray)
+	public partial class Canvas : Control
 	{
-		colors = colorArray;
-		QueueRedraw();
-	}
+		private Color[,] colors;
 
-	public override void _Draw()
-	{
-		base._Draw();
-
-		if (colors == null)
+		public void SetColors(Color[,] colorArray)
 		{
-			return;
+			colors = colorArray;
+			QueueRedraw();
 		}
 
-		int size = colors.GetLength(0);
-		float cellSize = Mathf.Min(Size.X, Size.Y) / size;
-
-		for (int i = 0; i < size; i++)
+		public override void _Draw()
 		{
-			for (int j = 0; j < size; j++)
+			base._Draw();
+
+			if (colors == null)
 			{
-				Rect2 rect = new(
-					i * cellSize,
-					j * cellSize,
-					cellSize,
-					cellSize
-				);
-				DrawRect(rect, colors[i, j]);
+				return;
+			}
+
+			int size = colors.GetLength(0);
+			float cellSize = Mathf.Min(Size.X, Size.Y) / size;
+
+			for (int i = 0; i < size; i++)
+			{
+				for (int j = 0; j < size; j++)
+				{
+					Rect2 rect = new(
+						i * cellSize,
+						j * cellSize,
+						cellSize,
+						cellSize
+					);
+					DrawRect(rect, colors[i, j]);
+				}
 			}
 		}
 	}

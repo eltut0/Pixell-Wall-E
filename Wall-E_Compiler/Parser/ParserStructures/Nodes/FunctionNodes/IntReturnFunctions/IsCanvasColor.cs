@@ -5,7 +5,7 @@ namespace Parser
 {
     class IsCanvasColor(string lex, int line, FunctionType functionType, List<GenericNode> arguments) : GenericFunction(lex, line, functionType, arguments)
     {
-        public int Result { get; private set; }
+        public new int Result { get; private set; }
         protected override void SpecialValidation()
         {
             GenericNode[] temp = [.. Children];

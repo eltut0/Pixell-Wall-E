@@ -1,4 +1,4 @@
-using System.Collections.Generic;
+using System.Drawing;
 using System.Linq;
 using Godot;
 using Lexer;
@@ -40,13 +40,17 @@ namespace ParserLibrary
                 MyLabel label = new(tokens[0].Lex, tokens[0].Line);
                 return label;
             }
+            if (tokens[0].Lex == "Spawn")
+            {
+                _ = new Exception(ExceptionType.SyntaxError, tokens[0].Line + 1, "Only one Spawn can be called");
+            }
             if (!(tokens.Length < 2))
             {
-                if (tokens[1].Lex != "<_" && tokens[1].Lex != "(")
+                if (tokens[1].Lex != "<_" && tokens[1].Lex != "(" && tokens[1].Lex != "[")
                 {
                     _ = new Exception(ExceptionType.SyntaxError, tokens[0].Line + 1, "Assignation for variable expected");
                 }
-                if (tokens[0].TokenType == TokenType.KeyWord && tokens[0].Lex == "GoTo")
+                if (tokens[0].Lex == "GoTo")
                 {
                     return GoToNode(tokens);
                 }
@@ -54,7 +58,7 @@ namespace ParserLibrary
                 {
                     if (tokens.Length < 3 || tokens[1].Lex != "(" || tokens[^1].Lex != ")")
                     {
-                        _ = new Exception(ExceptionType.Argument, tokens[0].Line + 1, "Delimiters expected");
+                        _ = new Exception(ExceptionType.LineOvercharge, tokens[0].Line + 1, "Delimiters expected");
                         return null;
                     }
 
@@ -66,7 +70,7 @@ namespace ParserLibrary
                     }
 
                     GenericFunction gn = BuildFunction(tokens[0].Lex, tokens[0].Line, args);
-                    gn.ValidateArgument();
+                    gn?.ValidateArgument();
                     return gn;
                 }
 
@@ -89,7 +93,7 @@ namespace ParserLibrary
                 _ = new Exception(ExceptionType.Argument, tokens[0].Line + 1, "Delimiters expected");
             }
 
-            _ = new Exception(ExceptionType.Argument, -1, "Delimiters expected"); ;
+            _ = new Exception(ExceptionType.Argument, -1, "Delimiters expected");
 
             return new("", -1);
         }
@@ -98,6 +102,7 @@ namespace ParserLibrary
         {
             return lex switch
             {
+                //functtions
                 "GetActualX" => new NonArgumentReturn(lex, line, FunctionType.GetActualX, [.. args]),
                 "GetActualY" => new NonArgumentReturn(lex, line, FunctionType.GetActualY, [.. args]),
                 "GetCanvasSize" => new NonArgumentReturn(lex, line, FunctionType.GetCanvasSize, [.. args]),
@@ -105,32 +110,39 @@ namespace ParserLibrary
                 "IsBrushColor" => new OneStringArgumentReturn(lex, line, FunctionType.IsBrushColor, [.. args]),
                 "IsBrushSize" => new OneIntArgumentReturn(lex, line, FunctionType.IsBrushSize, [.. args]),
                 "IsCanvasColor" => new IsCanvasColor(lex, line, FunctionType.IsCanvasColor, [.. args]),
+                //instructions
+                "Color" => new OneStringArgument(lex, line, FunctionType.Color, [.. args]),
+                "Size" => new OneIntArgument(lex, line, FunctionType.Size, [.. args]),
+                "DrawLine" => new ThreeIntsArgument(lex, line, FunctionType.DrawLine, [.. args]),
+                "DrawCircle" => new OneIntArgument(lex, line, FunctionType.DrawCircle, [.. args]),
+                "DrawRectangle" => new OneIntArgument(lex, line, FunctionType.DrawRectangle, [.. args]),
+                "Fill" => new OneIntArgument(lex, line, FunctionType.Fill, [.. args]),
                 _ => null,
             };
         }
 
         private static GoToJump GoToNode(Token[] tokens)
         {
-            throw new System.NotImplementedException();
-        }
-
-        private static Token[][] SplitArguments(Token[] args)
-        {
-            List<List<Token>> temp = [[],];
-
-            foreach (Token token in args)
+            if (tokens.Length < 7)
             {
-                if (token.Lex == ",")
-                {
-                    temp.Add([]);
-                }
-                else
-                {
-                    temp.Last().Add(token);
-                }
+                _ = new Exception(ExceptionType.Argument, tokens[0].Line + 1, "Non complete defintion for a GoTo: \"GoTo [label] (boolean condition)\"");
+                return null;
+            }
+            if (tokens[1].Lex != "[" || tokens[2].TokenType != TokenType.Identifier || tokens[3].Lex != "]")
+            {
+                _ = new Exception(ExceptionType.Argument, tokens[0].Line + 1, "Non valid label declaration \"GoTo [label]\"");
+                return null;
+            }
+            if (tokens[4].Lex != "(" || tokens[^1].Lex != ")")
+            {
+                _ = new Exception(ExceptionType.Argument, tokens[0].Line + 1, "Delimiters expected for the boolean condition declaration");
+                return null;
             }
 
-            return [.. temp.Where(sub => sub.Count > 0).Select(sub => sub.ToArray())];
+            MyLabel label = new(tokens[2].Lex, tokens[2].Line);
+            GenericBooleanNode condition = BuildBooleanNode(tokens[5..^1]);
+
+            return new GoToJump(tokens[0].Lex, tokens[0].Line, condition, label);
         }
     }
 }

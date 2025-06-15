@@ -9,6 +9,6 @@ public partial class RealTimeExceptionsControl : Control
 		CodeEditord editor = GetNode<CodeEditord>(GlobalParameters.ProjectGlobalParameters.CodeEditorNode);
 		string[] code = editor.GetCode();
 		Lexer.Lexer.InitializeLex(code);
-		Parser.Parser.ParserInit(false);
+		Parser.Parser.ParserInit(true);
 	}
 }

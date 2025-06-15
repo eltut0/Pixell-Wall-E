@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using Compiler;
 using Godot;
 
 namespace Parser
@@ -39,7 +40,8 @@ namespace Parser
 
         static void Spawn(int x, int y)
         {
-            throw new NotImplementedException();
+            CodeCompiler.XPosition = x;
+            CodeCompiler.YPosition = y;
         }
 
     }

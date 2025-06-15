@@ -27,7 +27,7 @@ namespace Parser
     }
     class ComparisonNode : GenericBooleanNode
     {
-        public ComparisonNode(string lex, int line, ArithmeticOperatorNode left, GenericNode right, BooleanComparison operation) : base(lex, line)
+        public ComparisonNode(string lex, int line, GenericNode left, GenericNode right, BooleanComparison operation) : base(lex, line)
         {
             AddChild(left);
             AddChild(right);
