@@ -1,9 +1,10 @@
+using Godot;
+
 namespace Parser
 {
     partial class ArithmeticOperatorNode : GenericNode
     {
         public ArithmeticOperator Operation { get; set; }
-        public new int Result { get; set; }
         public ArithmeticOperatorNode(string lex, int Line, ArithmeticOperator arithmeticOperator, GenericNode firstChild,
         GenericNode secondChild) : base(lex, Line)
         {
@@ -15,9 +16,9 @@ namespace Parser
         {
             if (Children.Count == 0)
             {
-                if (int.TryParse(Lex, out int Value))
+                if (int.TryParse(Lex, out int Val))
                 {
-                    Result = Value;
+                    Result = Val;
                 }
                 else
                 {
@@ -28,9 +29,9 @@ namespace Parser
             {
                 foreach (var child in Children)
                 {
-                    ((ArithmeticOperatorNode)child).ExecuteNode();
+                    child.ExecuteNode();
                 }
-                Result = Operation(((ArithmeticOperatorNode)Children[0]).Result, ((ArithmeticOperatorNode)Children[1]).Result);
+                Result = Operation(Children[0].Result, Children[1].Result);
             }
         }
     }

@@ -1,5 +1,6 @@
-using System;
+using ParserLibrary;
 using System.Collections.Generic;
+using Godot;
 
 namespace Parser
 {
@@ -30,7 +31,13 @@ namespace Parser
 
         static void Color(string k)
         {
-            throw new NotImplementedException();
+            if (Library.ColorsDic.TryGetValue(k, out Color color))
+            {
+                Compiler.CodeCompiler.BrushColor = color;
+                return;
+            }
+
+            _ = new Exception(ExceptionType.Argument, -1, $"Non valid color {k}");
         }
 
     }

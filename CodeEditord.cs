@@ -30,9 +30,10 @@ public partial class CodeEditord : CodeEdit
 			{"DrawRectangle", new Color("#1E8449")},
 			{"DrawLine", new Color("#1E8449")},
 			{"Fill", new Color("#1E8449")},
+			{"DrawPixel", new Color("#1E8449")},
 
 			//blue for functions
-			{"GetActualX", new Color("#4A6FA5")},
+			{ "GetActualX", new Color("#4A6FA5")},
 			{"GetActualY", new Color("#4A6FA5")},
 			{"GetCanvasSize", new Color("#4A6FA5")},
 			{"GetColorCount", new Color("#4A6FA5")},

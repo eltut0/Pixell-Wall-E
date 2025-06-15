@@ -8,7 +8,7 @@ namespace Parser
         public override void ExecuteNode()
         {
             VarValue.ExecuteNode();
-            Variable.VariablesDic[Lex] = ((ArithmeticOperatorNode)VarValue).Result; //every possible input type contains a definition for Result
+            Variable.VariablesDic[Lex] = VarValue.Result; //every possible input type contains a definition for Result
         }
     }
 }

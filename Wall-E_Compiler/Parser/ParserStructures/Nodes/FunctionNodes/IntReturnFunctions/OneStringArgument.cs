@@ -1,11 +1,11 @@
-using System;
+using Godot;
 using System.Collections.Generic;
+using ParserLibrary;
 
 namespace Parser
 {
     class OneStringArgumentReturn(string lex, int line, FunctionType functionType, List<GenericNode> arguments) : GenericFunction(lex, line, functionType, arguments)
     {
-        public new int Result { get; private set; }
         protected delegate int Operation(string x);
         private readonly Operation _Operation = _operations[functionType];
         private static readonly Dictionary<FunctionType, Operation> _operations = new()
@@ -31,7 +31,15 @@ namespace Parser
 
         static int IsBrushColor(string x)
         {
-            throw new NotImplementedException();
+            if (Library.ColorsDic.TryGetValue(x, out Color color))
+            {
+                if (color == Compiler.CodeCompiler.BrushColor)
+                {
+                    return 1;
+                }
+            }
+
+            return 0;
         }
     }
 }

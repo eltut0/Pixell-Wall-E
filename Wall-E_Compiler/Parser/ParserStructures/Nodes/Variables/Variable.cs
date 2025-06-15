@@ -4,7 +4,6 @@ namespace Parser
 {
     class Variable(string lex, int line) : GenericNode(lex, line)
     {
-        public int Result { get; private set; }
         public static readonly Dictionary<string, int> VariablesDic = [];
 
         public override void ExecuteNode()

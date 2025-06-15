@@ -3,13 +3,17 @@ public static class InfoWindow
 {
     public static void DisplayInfoWindow(string title, string text, int length, int heigth)
     {
-        var inputwindow = new Window();
-        inputwindow.Title = title;
-        inputwindow.Size = new Vector2I(length, heigth);
-        inputwindow.Unresizable = true;
+        var inputwindow = new Window
+        {
+            Title = title,
+            Size = new Vector2I(length, heigth),
+            Unresizable = true
+        };
 
-        var vbox = new VBoxContainer();
-        vbox.Size = inputwindow.Size;
+        var vbox = new VBoxContainer
+        {
+            Size = inputwindow.Size
+        };
 
         //label 
         var editorv = new Label

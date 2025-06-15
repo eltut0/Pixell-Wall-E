@@ -5,7 +5,6 @@ namespace Parser
 {
     class OneIntArgumentReturn(string lex, int line, FunctionType functionType, List<GenericNode> arguments) : GenericFunction(lex, line, functionType, arguments)
     {
-        public new int Result { get; private set; }
         protected delegate int Operation(int x);
         private readonly Operation _Operation = _operations[functionType];
         private static readonly Dictionary<FunctionType, Operation> _operations = new()
@@ -26,7 +25,7 @@ namespace Parser
         public override void ExecuteNode()
         {
             Children[0].ExecuteNode();
-            Result = _Operation(((ArithmeticOperatorNode)Children[0]).Result);
+            Result = _Operation(Children[0].Result);
         }
 
         static int IsBrushSize(int k)

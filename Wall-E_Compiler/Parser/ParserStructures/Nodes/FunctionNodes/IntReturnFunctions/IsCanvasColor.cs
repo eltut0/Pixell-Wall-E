@@ -5,7 +5,6 @@ namespace Parser
 {
     class IsCanvasColor(string lex, int line, FunctionType functionType, List<GenericNode> arguments) : GenericFunction(lex, line, functionType, arguments)
     {
-        public new int Result { get; private set; }
         protected override void SpecialValidation()
         {
             GenericNode[] temp = [.. Children];
@@ -25,7 +24,7 @@ namespace Parser
         public override void ExecuteNode()
         {
             foreach (var node in Children) { node.ExecuteNode(); }
-            Result = IsCanvasColorFunc(Children[0].Lex, ((ArithmeticOperatorNode)Children[1]).Result, ((ArithmeticOperatorNode)Children[2]).Result);
+            Result = IsCanvasColorFunc(Children[0].Lex, Children[1].Result, Children[2].Result);
         }
         private static int IsCanvasColorFunc(string color, int x, int y)
         {

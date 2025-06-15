@@ -38,6 +38,7 @@ namespace ParserLibrary
             if (tokens.Length == 1 && !Functions.Contains(tokens[0].Lex))
             {
                 MyLabel label = new(tokens[0].Lex, tokens[0].Line);
+                label.AddList();
                 return label;
             }
             if (tokens[0].Lex == "Spawn")
@@ -114,9 +115,10 @@ namespace ParserLibrary
                 "Color" => new OneStringArgument(lex, line, FunctionType.Color, [.. args]),
                 "Size" => new OneIntArgument(lex, line, FunctionType.Size, [.. args]),
                 "DrawLine" => new ThreeIntsArgument(lex, line, FunctionType.DrawLine, [.. args]),
-                "DrawCircle" => new OneIntArgument(lex, line, FunctionType.DrawCircle, [.. args]),
+                "DrawCircle" => new ThreeIntsArgument(lex, line, FunctionType.DrawCircle, [.. args]),
                 "DrawRectangle" => new OneIntArgument(lex, line, FunctionType.DrawRectangle, [.. args]),
-                "Fill" => new OneIntArgument(lex, line, FunctionType.Fill, [.. args]),
+                "Fill" => new NonArgument(lex, line, FunctionType.Fill, [.. args]),
+                "DrawPixel" => new TwoIntsArgument(lex, line, FunctionType.DrawPixel, [.. args]),
                 _ => null,
             };
         }
@@ -139,10 +141,9 @@ namespace ParserLibrary
                 return null;
             }
 
-            MyLabel label = new(tokens[2].Lex, tokens[2].Line);
             GenericBooleanNode condition = BuildBooleanNode(tokens[5..^1]);
 
-            return new GoToJump(tokens[0].Lex, tokens[0].Line, condition, label);
+            return new GoToJump(tokens[0].Lex, tokens[0].Line, condition, tokens[2].Lex);
         }
     }
 }

@@ -27,7 +27,17 @@ namespace Parser
 
         static void Size(int k)
         {
-            throw new NotImplementedException();
+            if (k % 2 == 0)
+            {
+                k--;
+                if (k < 1) k = 1;
+            }
+            else
+            {
+                if (k < 1) k = 1;
+            }
+
+            Compiler.CodeCompiler.BrushSize = k;
         }
 
     }

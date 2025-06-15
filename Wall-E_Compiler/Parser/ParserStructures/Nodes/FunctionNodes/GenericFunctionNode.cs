@@ -16,6 +16,7 @@ namespace Parser
         public static readonly Dictionary<FunctionType, int> ArgsCount = new()
         {
             { FunctionType.Spawn,2},
+            { FunctionType.ReSpawn,2},
             { FunctionType.Color,1},
             { FunctionType.Size,1},
             { FunctionType.DrawLine,3},
@@ -28,7 +29,8 @@ namespace Parser
             { FunctionType.GetColorCount,5},
             { FunctionType.IsBrushColor,1},
             { FunctionType.IsCanvasColor,3},
-            { FunctionType.IsBrushSize,1}
+            { FunctionType.IsBrushSize,1},
+            { FunctionType.DrawPixel, 2 }
         };
         public FunctionType FunctionType { get; private set; }
 
@@ -52,6 +54,7 @@ namespace Parser
     public enum FunctionType
     {
         Spawn,
+        ReSpawn,
         Color,
         Size,
         DrawLine,
@@ -65,5 +68,6 @@ namespace Parser
         IsBrushColor,
         IsCanvasColor,
         IsBrushSize,
+        DrawPixel,
     }
 }

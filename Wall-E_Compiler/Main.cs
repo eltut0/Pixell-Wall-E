@@ -1,4 +1,5 @@
 using System.Linq;
+using System.Threading;
 using Canvas;
 using Godot;
 using Parser;
@@ -7,6 +8,7 @@ namespace Compiler
 {
     public static class CodeCompiler
     {
+        public static bool DontCheck { get; private set; }
         public static int XPosition { get; set; }
         public static int YPosition { get; set; }
         public static Color BrushColor { get; set; }
@@ -24,6 +26,8 @@ namespace Compiler
 
         private static void InterpretateCode()
         {
+            DontCheck = true;
+
             //re initialize parameterss
             BrushColor = Colors.Transparent;
             CanvasMatrix = new Color[GlobalParameters.ProjectGlobalParameters.CanvasSize, GlobalParameters.ProjectGlobalParameters.CanvasSize];
@@ -33,38 +37,44 @@ namespace Compiler
             {
                 for (int j = 0; j < CanvasMatrix.GetLength(0); j++)
                 {
-                    if (i == j)
-                    {
-                        CanvasMatrix[i, j] = Colors.Blue;
-                        continue;
-                    }
-                    CanvasMatrix[i, j] = Colors.Red;
+                    CanvasMatrix[i, j] = Colors.Transparent;
                 }
             }
 
-
-
             GenericNode[] AST = Parser.Parser.ProcesedAST;
-            for (int i = 0; i < AST.Length; i++)
+            GD.Print(AST.Length);
+            int count = 0; //for infinite loops
+            int k = 0;
+
+            while (k < AST.Length)
             {
+                if (AST[k] is GoToJump temp)
+                {
+                    MyLabel label = MyLabel.Labels.Find(x => x.Lex == temp.Label);
+                    if (label == null) { _ = new Exception(ExceptionType.NotDefinedObject, temp.Line + 1, "Non defined label"); }
+                    else
+                    {
+                        if (temp.ValidJump()) { k = label.Line; }
+                    }
+                }
+
+                AST[k].ExecuteNode();
+
                 if (Exception.exceptionList.Count > 0)
                 {
                     InfoWindow.DisplayInfoWindow("Exception during the execution", $"{Exception.exceptionList[0].Type}, {Exception.exceptionList[0].Line}, {Exception.exceptionList[0].Lex}", 400, 100);
                     break;
                 }
-                //conditional jump case
-                if (AST[i].GetType() == typeof(GoToJump))
-                {
-                    AST[i].ExecuteNode();
-                    if (((GoToJump)AST[i]).ValidJump() && MyLabel.Labels.Any(x => x.Lex == ((GoToJump)AST[i]).Label.Lex))
-                    {
-                        i = ((GoToJump)AST[i]).Label.Line;
-                    }
-                    continue;
-                }
 
-                AST[i].ExecuteNode();
+                count++;
+                k++;
+                if (count == 10000)
+                {
+                    _ = new Exception(ExceptionType.LineOvercharge, -1, $"Possible infinite loop, stopped after {count} iterations");
+                }
             }
+
+            DontCheck = false;
 
             var tempNode = new Node();
             // Obtener el árbol de la escena actual (funciona si se llama desde MainLoop)

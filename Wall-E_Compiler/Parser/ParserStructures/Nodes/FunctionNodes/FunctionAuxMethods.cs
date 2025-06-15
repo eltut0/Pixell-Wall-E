@@ -4,17 +4,17 @@ namespace Parser
 {
     public static class FunctionAuxMethods
     {
-        static void DrawPixel(int centerX, int centerY, int brushSize)
+        public static void DrawPixel()
         {
             Color color = Compiler.CodeCompiler.BrushColor;
-
-            int halfSize = brushSize / 2;
+            int centerX = Compiler.CodeCompiler.XPosition;
+            int centerY = Compiler.CodeCompiler.YPosition;
+            int halfSize = Compiler.CodeCompiler.BrushSize / 2;
 
             for (int offsetX = -halfSize; offsetX <= halfSize; offsetX++)
             {
                 for (int offsetY = -halfSize; offsetY <= halfSize; offsetY++)
                 {
-
                     if (IsWithinCanvas(centerX + offsetX, centerY + offsetY))
                     {
 

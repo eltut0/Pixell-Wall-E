@@ -1,0 +1,6 @@
+10
+Spawn(0,0)
+Color("Blue")
+labe
+is <_ IsBrushColor("Blue")
+GoTo [labe] (is == 1)

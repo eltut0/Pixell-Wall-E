@@ -5,7 +5,6 @@ namespace Parser
 {
     class NonArgumentReturn(string lex, int line, FunctionType functionType, List<GenericNode> arguments) : GenericFunction(lex, line, functionType, arguments)
     {
-        public new int Result { get; private set; }
         protected delegate int Operation();
         private readonly Operation _Operation = _operations[functionType];
         private static readonly Dictionary<FunctionType, Operation> _operations = new()
@@ -20,15 +19,15 @@ namespace Parser
         }
         static int GetCanvasSize()
         {
-            throw new NotImplementedException();
+            return GlobalParameters.ProjectGlobalParameters.CanvasSize;
         }
         static int GetActualX()
         {
-            throw new NotImplementedException();
+            return Compiler.CodeCompiler.XPosition;
         }
         static int GetActualY()
         {
-            throw new NotImplementedException();
+            return Compiler.CodeCompiler.YPosition;
         }
     }
 }
