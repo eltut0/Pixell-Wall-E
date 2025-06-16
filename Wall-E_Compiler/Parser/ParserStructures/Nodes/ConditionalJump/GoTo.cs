@@ -10,8 +10,6 @@ namespace Parser
         public bool ValidJump()
         {
             Condition.ExecuteNode();
-            Parser.PrintTree(Condition);
-            GD.Print(Condition.Result);
             return Condition.Result;
         }
     }

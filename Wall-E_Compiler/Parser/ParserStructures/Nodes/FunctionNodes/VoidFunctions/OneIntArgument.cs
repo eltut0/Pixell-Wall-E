@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace Parser
 {
@@ -9,7 +10,7 @@ namespace Parser
         private readonly Operation _operation = _operations[functionType];
         protected override void SpecialValidation()
         {
-            if (!(Children[0].GetType() == typeof(Variable) || Children[0].GetType() == typeof(ArithmeticOperatorNode)))
+            if (!(Children[0].GetType() == typeof(Variable) || Children[0].GetType() == typeof(ArithmeticOperatorNode) || ParserLibrary.Library.ReturnFunctions.Contains(Children[0].Lex)))
             {
                 _ = new Exception(ExceptionType.Argument, Line, $"Non valid argument");
                 return;

@@ -10,7 +10,7 @@ namespace GlobalParameters
 
         //version info
         public const string EditorVersion = "0.3";
-        public const string CompilerVersion = "Development Phase";
+        public const string CompilerVersion = "1.0";
         public const string AddedChanges = "Non implemented";
 
         //routes for nodes

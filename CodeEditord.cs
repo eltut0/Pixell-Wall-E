@@ -22,7 +22,8 @@ public partial class CodeEditord : CodeEdit
 
 			//yellow for all related with walle
 			{ "Spawn", new Color("#FFFF00")},
-			{"Color", new Color("#FFFF00")},
+			{ "ReSpawn", new Color("#FFFF00")},
+			{ "Color", new Color("#FFFF00")},
 			{"Size", new Color("#FFFF00")},
 
 			//green for the drawing functions

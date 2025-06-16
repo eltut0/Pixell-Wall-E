@@ -1,5 +1,7 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
+using Godot;
 
 namespace Parser
 {
@@ -11,7 +13,7 @@ namespace Parser
         {
             foreach (var arg in Children)
             {
-                if (!(arg.GetType() == typeof(Variable) || arg.GetType() == typeof(ArithmeticOperatorNode)))
+                if (!(arg.GetType() == typeof(Variable) || arg.GetType() == typeof(ArithmeticOperatorNode) || ParserLibrary.Library.ReturnFunctions.Contains(arg.Lex)))
                 {
                     _ = new Exception(ExceptionType.Argument, Line, $"Non valid argument");
                     return;
@@ -32,9 +34,63 @@ namespace Parser
             {FunctionType.DrawRectangle, DrawRectangle},
         };
 
-        static void DrawRectangle(int dirX, int dirY, int distance, int width, int height)
+        public static void DrawRectangle(int dirX, int dirY, int distance, int width, int height)
         {
-            throw new NotImplementedException();
+            if (Math.Abs(dirX) > 1 || Math.Abs(dirY) > 1 || (dirX == 0 && dirY == 0))
+            {
+                _ = new Exception(ExceptionType.Argument, -1, "Invalid direction parameters");
+                return;
+            }
+
+            if (width <= 0 || height <= 0)
+            {
+                _ = new Exception(ExceptionType.Argument, -1, "Width and height must be positive");
+                return;
+            }
+
+            int currentX = Compiler.CodeCompiler.XPosition;
+            int currentY = Compiler.CodeCompiler.YPosition;
+            int centerX = currentX + dirX * distance;
+            int centerY = currentY + dirY * distance;
+
+            int canvasSize = GlobalParameters.ProjectGlobalParameters.CanvasSize;
+            if (centerX < 0 || centerX >= canvasSize || centerY < 0 || centerY >= canvasSize)
+            {
+                _ = new Exception(ExceptionType.Argument, -1, "Rectangle center out of canvas bounds");
+                return;
+            }
+
+            int halfWidth = width / 2;
+            int halfHeight = height / 2;
+
+            int left = Math.Max(0, centerX - halfWidth);
+            int right = Math.Min(canvasSize - 1, centerX + halfWidth);
+            int top = Math.Max(0, centerY - halfHeight);
+            int bottom = Math.Min(canvasSize - 1, centerY + halfHeight);
+
+            int originalX = currentX;
+            int originalY = currentY;
+            Color originalColor = Compiler.CodeCompiler.BrushColor;
+
+            Compiler.CodeCompiler.XPosition = left;
+            Compiler.CodeCompiler.YPosition = top;
+            ThreeIntsArgument.DrawLine(1, 0, right - left);
+
+            Compiler.CodeCompiler.XPosition = right;
+            Compiler.CodeCompiler.YPosition = top;
+            ThreeIntsArgument.DrawLine(0, 1, bottom - top);
+
+            Compiler.CodeCompiler.XPosition = right;
+            Compiler.CodeCompiler.YPosition = bottom;
+            ThreeIntsArgument.DrawLine(-1, 0, right - left);
+
+            Compiler.CodeCompiler.XPosition = left;
+            Compiler.CodeCompiler.YPosition = bottom;
+            ThreeIntsArgument.DrawLine(0, -1, bottom - top);
+
+            Compiler.CodeCompiler.XPosition = centerX;
+            Compiler.CodeCompiler.YPosition = centerY;
+            Compiler.CodeCompiler.BrushColor = originalColor;
         }
 
     }

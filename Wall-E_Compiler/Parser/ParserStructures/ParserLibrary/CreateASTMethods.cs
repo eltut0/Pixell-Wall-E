@@ -112,11 +112,12 @@ namespace ParserLibrary
                 "IsBrushSize" => new OneIntArgumentReturn(lex, line, FunctionType.IsBrushSize, [.. args]),
                 "IsCanvasColor" => new IsCanvasColor(lex, line, FunctionType.IsCanvasColor, [.. args]),
                 //instructions
+                "ReSpawn" => new TwoIntsArgument(lex, line, FunctionType.ReSpawn, [.. args]),
                 "Color" => new OneStringArgument(lex, line, FunctionType.Color, [.. args]),
                 "Size" => new OneIntArgument(lex, line, FunctionType.Size, [.. args]),
                 "DrawLine" => new ThreeIntsArgument(lex, line, FunctionType.DrawLine, [.. args]),
                 "DrawCircle" => new ThreeIntsArgument(lex, line, FunctionType.DrawCircle, [.. args]),
-                "DrawRectangle" => new OneIntArgument(lex, line, FunctionType.DrawRectangle, [.. args]),
+                "DrawRectangle" => new FiveIntsArgument(lex, line, FunctionType.DrawRectangle, [.. args]),
                 "Fill" => new NonArgument(lex, line, FunctionType.Fill, [.. args]),
                 "DrawPixel" => new TwoIntsArgument(lex, line, FunctionType.DrawPixel, [.. args]),
                 _ => null,

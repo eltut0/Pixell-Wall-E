@@ -7,6 +7,7 @@ namespace ParserLibrary
     {
         public static readonly string[] Functions = [
             "Spawn",
+            "ReSpawn",
             "Color",
             "Size",
             "DrawLine",

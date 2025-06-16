@@ -42,7 +42,6 @@ namespace Compiler
             }
 
             GenericNode[] AST = Parser.Parser.ProcesedAST;
-            GD.Print(AST.Length);
             int count = 0; //for infinite loops
             int k = 0;
 
@@ -62,7 +61,7 @@ namespace Compiler
 
                 if (Exception.exceptionList.Count > 0)
                 {
-                    InfoWindow.DisplayInfoWindow("Exception during the execution", $"{Exception.exceptionList[0].Type}, {Exception.exceptionList[0].Line}, {Exception.exceptionList[0].Lex}", 400, 100);
+                    InfoWindow.DisplayInfoWindow("Exception during the execution", $"{Exception.exceptionList[0].Type}, {k + 1}, {Exception.exceptionList[0].Lex}", 400, 100);
                     break;
                 }
 

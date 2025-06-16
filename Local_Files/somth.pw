@@ -1,0 +1,14 @@
+101
+Spawn(GetCanvasSize()/2,0)
+Color("DarkBlue")
+x <_ 0
+label
+DrawCircle(0, 1, 5)
+x <_ x + 5
+GoTo [label] (x < 100)
+ReSpawn(0,0)
+Color("Black")
+Fill()
+ReSpawn(GetCanvasSize() -1, GetCanvasSize() -1)
+Color("White")
+Fill()

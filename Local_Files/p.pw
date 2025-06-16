@@ -1,6 +1,7 @@
 10
 Spawn(0,0)
-Color("Blue")
-labe
-is <_ IsBrushColor("Blue")
-GoTo [labe] (is == 1)
+Color("Black")
+Fill()
+x <_ GetColorCount("Black", 0, 0, 9, 9)
+l
+GoTo [l] (x == 0)

@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using Compiler;
 using Godot;
 
@@ -18,9 +19,9 @@ namespace Parser
             }
             foreach (var arg in Children)
             {
-                if (!(arg.GetType() == typeof(Variable) || arg.GetType() == typeof(ArithmeticOperatorNode)))
+                if (!(arg.GetType() == typeof(Variable) || arg.GetType() == typeof(ArithmeticOperatorNode) || ParserLibrary.Library.ReturnFunctions.Contains(arg.Lex)))
                 {
-                    _ = new Exception(ExceptionType.Argument, Line, $"Non valid argument");
+                    _ = new Exception(ExceptionType.Argument, Line + 1, $"Non valid argument");
                     return;
                 }
             }

@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace Parser
 {
@@ -15,7 +16,7 @@ namespace Parser
         {
             foreach (var arg in Children)
             {
-                if (!(arg.GetType() == typeof(Variable) || arg.GetType() == typeof(ArithmeticOperatorNode)))
+                if (!(arg.GetType() == typeof(Variable) || arg.GetType() == typeof(ArithmeticOperatorNode) || ParserLibrary.Library.ReturnFunctions.Contains(Children[0].Lex)))
                 {
                     _ = new Exception(ExceptionType.Argument, Line, $"Non valid argument");
                     return;
@@ -30,7 +31,8 @@ namespace Parser
 
         static int IsBrushSize(int k)
         {
-            throw new NotImplementedException();
+            if (Compiler.CodeCompiler.BrushSize == k) { return 1; }
+            return 0;
         }
     }
 }

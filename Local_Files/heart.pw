@@ -1,0 +1,12 @@
+25
+Spawn(3, 3)
+Color("Red")
+DrawLine(1, 1, 3)
+DrawLine(1, 0-1, 3)
+DrawCircle(0-1, 0, 1)
+DrawLine(0-1, 0, 4)
+DrawCircle(0, 0, 1)
+x <_ GetActualX() 
+y <_ GetActualY() + 2
+ReSpawn(x, y)
+Fill()

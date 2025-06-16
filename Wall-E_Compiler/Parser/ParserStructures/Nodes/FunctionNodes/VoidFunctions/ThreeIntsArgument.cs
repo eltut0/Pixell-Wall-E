@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using Godot;
 
 namespace Parser
@@ -12,7 +13,7 @@ namespace Parser
         {
             foreach (var arg in Children)
             {
-                if (!(arg.GetType() == typeof(Variable) || arg.GetType() == typeof(ArithmeticOperatorNode)))
+                if (!(arg.GetType() == typeof(Variable) || arg.GetType() == typeof(ArithmeticOperatorNode) || ParserLibrary.Library.ReturnFunctions.Contains(arg.Lex)))
                 {
                     _ = new Exception(ExceptionType.Argument, Line, $"Non valid argument");
                     return;
@@ -35,20 +36,17 @@ namespace Parser
 
         public static void DrawLine(int dirX, int dirY, int distance)
         {
-            // Validar dirección (debe ser -1, 0 o 1 en X/Y, y no ambas 0)
             if (Math.Abs(dirX) > 1 || Math.Abs(dirY) > 1 || (dirX == 0 && dirY == 0))
             {
                 _ = new Exception(ExceptionType.Argument, -1, "Non valid argument for DrawLine");
                 return;
             }
 
-            // Obtener posición inicial y configuración
             int startX = Compiler.CodeCompiler.XPosition;
             int startY = Compiler.CodeCompiler.YPosition;
             int endX = startX + dirX * distance;
             int endY = startY + dirY * distance;
 
-            // Validar límites del canvas
             int canvasSize = GlobalParameters.ProjectGlobalParameters.CanvasSize;
             if (endX < 0 || endX >= canvasSize || endY < 0 || endY >= canvasSize)
             {
@@ -56,7 +54,6 @@ namespace Parser
                 return;
             }
 
-            // Algoritmo de Bresenham optimizado
             int dx = Math.Abs(endX - startX);
             int dy = -Math.Abs(endY - startY);
             int sx = startX < endX ? 1 : -1;
@@ -89,7 +86,7 @@ namespace Parser
         }
         public static void DrawCircle(int dirX, int dirY, int radius)
         {
-            if (Math.Abs(dirX) > 1 || Math.Abs(dirY) > 1 || (dirX == 0 && dirY == 0) || radius <= 0)
+            if (Math.Abs(dirX) > 1 || Math.Abs(dirY) > 1 || radius <= 0)
             {
                 _ = new Exception(ExceptionType.Argument, -1, "Non valid argument for DrawCircle");
                 return;
