@@ -1,7 +1,0 @@
-10
-Spawn(0,0)
-Color("Black")
-Fill()
-x <_ GetColorCount("Black", 0, 0, 9, 9)
-l
-GoTo [l] (x == 0)

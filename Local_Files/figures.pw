@@ -1,0 +1,20 @@
+100
+Spawn(50, 50)
+Color("Red")
+Size(3)
+DrawLine(1, 0, 20)
+DrawLine(0, 1, 20)
+DrawLine(0-1, 0, 20)
+DrawLine(0,0 -1, 20)
+Color("Blue")
+DrawCircle(0, 0, 15)
+Color("Green")
+x <_ 10
+y <_ 10
+loop
+DrawPixel(x, y)
+x <_ x + 5
+y <_ y + 5
+GoTo [loop] (x < 90)
+Color("Purple")
+Fill()

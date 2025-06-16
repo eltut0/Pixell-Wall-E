@@ -1,5 +1,6 @@
 using Godot;
 using System;
+using System.Linq;
 using System.Runtime.CompilerServices;
 
 public partial class CodeEditord : CodeEdit
@@ -56,6 +57,7 @@ public partial class CodeEditord : CodeEdit
 
 	public string[] GetCode()
 	{
-		return code.Text.Split('\n');
+		string[] returnable = code.Text.Split('\n');
+		return [.. returnable.Where(line => !string.IsNullOrWhiteSpace(line))];
 	}
 }
