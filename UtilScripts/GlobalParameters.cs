@@ -9,7 +9,7 @@ namespace GlobalParameters
         public static string ActualFileLocation { get; set; } = "Non opened project";
 
         //version info
-        public const string EditorVersion = "0.3";
+        public const string EditorVersion = "1.0";
         public const string CompilerVersion = "1.0";
         public const string AddedChanges = "Non implemented";
 

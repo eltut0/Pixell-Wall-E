@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://ct7q2nab1qeba"
-path="res://.godot/imported/device-floppy.svg-0274a9014f6cdebe0eeff842c321fbed.ctex"
+uid="uid://e6jf3nyvkmrj"
+path="res://.godot/imported/icons8-documento-67.png-8943af0edd194af3ec39c46c33507c39.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://icons/device-floppy.svg"
-dest_files=["res://.godot/imported/device-floppy.svg-0274a9014f6cdebe0eeff842c321fbed.ctex"]
+source_file="res://icons/icons8-documento-67.png"
+dest_files=["res://.godot/imported/icons8-documento-67.png-8943af0edd194af3ec39c46c33507c39.ctex"]
 
 [params]
 
@@ -32,6 +32,3 @@ process/hdr_as_srgb=false
 process/hdr_clamp_exposure=false
 process/size_limit=0
 detect_3d/compress_to=1
-svg/scale=1.0
-editor/scale_with_editor_scale=false
-editor/convert_colors_with_editor_theme=false

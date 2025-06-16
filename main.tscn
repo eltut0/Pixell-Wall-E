@@ -3,19 +3,19 @@
 [ext_resource type="Texture2D" uid="uid://c2tuuem4xkh0" path="res://icons/preview.png" id="1_1bvp3"]
 [ext_resource type="Script" uid="uid://c2crsh40kbsr" path="res://Button Scripts/InfoButton.cs" id="1_kek77"]
 [ext_resource type="Script" uid="uid://dt1ardnrjq0pu" path="res://Button Scripts/ResizeCanvasButton.cs" id="3_5vw27"]
-[ext_resource type="Texture2D" uid="uid://dqboqh2tdtsne" path="res://icons/aspect-ratio.svg" id="4_w48qg"]
+[ext_resource type="Texture2D" uid="uid://c827baco6rmut" path="res://icons/icons8-cambiar-el-tamaño-64.png" id="4_getpj"]
 [ext_resource type="Script" uid="uid://bao6mb8d0jr4e" path="res://Button Scripts/SaveCodeButton.cs" id="5_efxa6"]
 [ext_resource type="Texture2D" uid="uid://dsyvfh0wn1r5f" path="res://icons/RunIcon.png" id="5_lquwl"]
 [ext_resource type="Script" uid="uid://cmox7rt0hrqoc" path="res://CodeEditord.cs" id="6_7mycd"]
-[ext_resource type="Texture2D" uid="uid://ct7q2nab1qeba" path="res://icons/device-floppy.svg" id="6_vivmo"]
+[ext_resource type="Texture2D" uid="uid://e6jf3nyvkmrj" path="res://icons/icons8-documento-67.png" id="6_ryguw"]
 [ext_resource type="Script" uid="uid://cvoofr8wt4imy" path="res://Button Scripts/RunCodeButton.cs" id="7_4c57u"]
 [ext_resource type="Script" uid="uid://bay0yxwyjk1kq" path="res://TopLabelInfo.cs" id="7_5vw27"]
 [ext_resource type="Script" uid="uid://iibpywr4mid2" path="res://Button Scripts/GetFileScript.cs" id="7_w48qg"]
-[ext_resource type="Texture2D" uid="uid://bj7qeevg4nj8l" path="res://icons/SaveIcon.svg" id="8_2cqfq"]
-[ext_resource type="Texture2D" uid="uid://jxxggg2jkv8j" path="res://icons/DebugIcon.png" id="10_dg77c"]
+[ext_resource type="Texture2D" uid="uid://cqscspvllpk80" path="res://icons/icons8-descargar-48.png" id="8_d13ii"]
 [ext_resource type="Script" uid="uid://dxthk8731cc7f" path="res://Button Scripts/DebugButton.cs" id="11_2cqfq"]
 [ext_resource type="Script" uid="uid://dr4v6xp8xger0" path="res://Button Scripts/MenuInfoButton.cs" id="11_ycdy4"]
-[ext_resource type="Texture2D" uid="uid://ct3auvjb72x4p" path="res://icons/QuestionIcon.svg" id="13_vivmo"]
+[ext_resource type="Texture2D" uid="uid://c2si1ojjril7i" path="res://icons/icons8-borrar-64 (1).png" id="12_1u8w0"]
+[ext_resource type="Texture2D" uid="uid://d2sbahj6f60nc" path="res://icons/help.png" id="14_0odxb"]
 [ext_resource type="Script" uid="uid://dgnky2dr25gsd" path="res://Button Scripts/ExitButton.cs" id="16_yaehf"]
 [ext_resource type="Texture2D" uid="uid://cimcn2q7g8lyg" path="res://icons/ExitIcon.png" id="17_074og"]
 [ext_resource type="Script" uid="uid://c5jtwtfnhmbq" path="res://Canvas/Canvas.cs" id="19_82xsv"]
@@ -124,11 +124,10 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("3_5vw27")
 
-[node name="Aspect-ratio" type="Sprite2D" parent="HBoxContainer/Menu_Bar/Menu_Bar_Separator/Resize_logo_container/Control/resize_canvas_button"]
-light_mask = 513
-position = Vector2(25, 19)
-scale = Vector2(1.95833, 1.79167)
-texture = ExtResource("4_w48qg")
+[node name="Icons8-cambiar-el-tamaño-64" type="Sprite2D" parent="HBoxContainer/Menu_Bar/Menu_Bar_Separator/Resize_logo_container/Control/resize_canvas_button"]
+position = Vector2(25, 18)
+scale = Vector2(0.539062, 0.554688)
+texture = ExtResource("4_getpj")
 
 [node name="Save_logo_container" type="VBoxContainer" parent="HBoxContainer/Menu_Bar/Menu_Bar_Separator"]
 custom_minimum_size = Vector2(0, 40)
@@ -147,10 +146,10 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("5_efxa6")
 
-[node name="Device-floppy" type="Sprite2D" parent="HBoxContainer/Menu_Bar/Menu_Bar_Separator/Save_logo_container/Control/SaveCodeButton"]
-position = Vector2(25, 21)
-scale = Vector2(2.04167, 1.75)
-texture = ExtResource("6_vivmo")
+[node name="Icons8-documento-67" type="Sprite2D" parent="HBoxContainer/Menu_Bar/Menu_Bar_Separator/Save_logo_container/Control/SaveCodeButton"]
+position = Vector2(24, 18)
+scale = Vector2(0.466418, 0.429104)
+texture = ExtResource("6_ryguw")
 
 [node name="Load_logo_container" type="VBoxContainer" parent="HBoxContainer/Menu_Bar/Menu_Bar_Separator"]
 custom_minimum_size = Vector2(0, 40)
@@ -169,10 +168,10 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("7_w48qg")
 
-[node name="SaveIcon" type="Sprite2D" parent="HBoxContainer/Menu_Bar/Menu_Bar_Separator/Load_logo_container/Control/LoadButton"]
-position = Vector2(25, 20)
-scale = Vector2(1.83333, 1.58333)
-texture = ExtResource("8_2cqfq")
+[node name="Icons8-descargar-48" type="Sprite2D" parent="HBoxContainer/Menu_Bar/Menu_Bar_Separator/Load_logo_container/Control/LoadButton"]
+position = Vector2(25, 21)
+scale = Vector2(0.770833, 0.833333)
+texture = ExtResource("8_d13ii")
 
 [node name="Run_logo" type="VBoxContainer" parent="HBoxContainer/Menu_Bar/Menu_Bar_Separator"]
 custom_minimum_size = Vector2(0, 40)
@@ -213,10 +212,10 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("11_2cqfq")
 
-[node name="DebugIcon" type="Sprite2D" parent="HBoxContainer/Menu_Bar/Menu_Bar_Separator/Debug_logo/Control/DebugButton"]
-position = Vector2(25, 19)
-scale = Vector2(0.0722656, 0.0546875)
-texture = ExtResource("10_dg77c")
+[node name="Icons8-borrar-64(1)" type="Sprite2D" parent="HBoxContainer/Menu_Bar/Menu_Bar_Separator/Debug_logo/Control/DebugButton"]
+position = Vector2(24, 18)
+scale = Vector2(0.53125, 0.484375)
+texture = ExtResource("12_1u8w0")
 
 [node name="Info_logo" type="VBoxContainer" parent="HBoxContainer/Menu_Bar/Menu_Bar_Separator"]
 custom_minimum_size = Vector2(0, 40)
@@ -235,10 +234,10 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("11_ycdy4")
 
-[node name="QuestionIcon" type="Sprite2D" parent="HBoxContainer/Menu_Bar/Menu_Bar_Separator/Info_logo/Control"]
-position = Vector2(24, 20)
-scale = Vector2(1.33333, 1.16667)
-texture = ExtResource("13_vivmo")
+[node name="Help" type="Sprite2D" parent="HBoxContainer/Menu_Bar/Menu_Bar_Separator/Info_logo/Control/Button"]
+position = Vector2(24, 19)
+scale = Vector2(0.66, 0.68)
+texture = ExtResource("14_0odxb")
 
 [node name="Top_bar_container" type="VBoxContainer" parent="HBoxContainer"]
 custom_minimum_size = Vector2(0, 20)

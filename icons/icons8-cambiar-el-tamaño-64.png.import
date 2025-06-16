@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dqboqh2tdtsne"
-path="res://.godot/imported/aspect-ratio.svg-2f880319758c66fb607d848360bb16b6.ctex"
+uid="uid://c827baco6rmut"
+path="res://.godot/imported/icons8-cambiar-el-tamaño-64.png-ed24a919ed89e494abe33ee030560780.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://icons/aspect-ratio.svg"
-dest_files=["res://.godot/imported/aspect-ratio.svg-2f880319758c66fb607d848360bb16b6.ctex"]
+source_file="res://icons/icons8-cambiar-el-tamaño-64.png"
+dest_files=["res://.godot/imported/icons8-cambiar-el-tamaño-64.png-ed24a919ed89e494abe33ee030560780.ctex"]
 
 [params]
 
@@ -32,6 +32,3 @@ process/hdr_as_srgb=false
 process/hdr_clamp_exposure=false
 process/size_limit=0
 detect_3d/compress_to=1
-svg/scale=1.0
-editor/scale_with_editor_scale=false
-editor/convert_colors_with_editor_theme=false

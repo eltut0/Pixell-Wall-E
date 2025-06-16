@@ -69,7 +69,7 @@ namespace Compiler
                 k++;
                 if (count == 10000)
                 {
-                    _ = new Exception(ExceptionType.LineOvercharge, -1, $"Possible infinite loop, stopped after {count} iterations");
+                    _ = new Exception(ExceptionType.LineOvercharge, -1, $"Possible infinite loop, stopped \n after {count} iterations");
                 }
             }
 
