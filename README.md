@@ -58,7 +58,7 @@
 ### Boolean Expressions
 - Comparisons: `==`, `>=`, `<=`, `>`, `<`.  
 - Logical: `&&` (AND), `||` (OR) *(OR has higher precedence)*.  
-- **Example:** `(x > 0) && (y < 100)`  
+- **Example:** `x > 0 && y < 100`  
 
 ---
 
@@ -90,3 +90,9 @@
   ```plaintext
   start_loop
   DrawLine(1, 0, 1)
+
+## Conditional Jumps
+
+### Syntax
+```plaintext
+GoTo [label_name] (boolean condition)

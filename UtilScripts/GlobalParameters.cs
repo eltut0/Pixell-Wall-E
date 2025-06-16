@@ -24,6 +24,6 @@ namespace GlobalParameters
         public static readonly string GenericLocalFolderRoute = Path.Combine(proyectoPath, "Local_Files");
 
         //github link
-        public static readonly string GHLink = "https://github.com/eltut0/Pixell-Wall-E";
+        public static readonly string GHLink = "https://github.com/eltut0/Pixell-Wall-E/blob/main/README.md";
     }
 }
