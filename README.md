@@ -1,3 +1,18 @@
+# Execute
+Just clone the repository and import to Godot
+
+# Interface
+## Top Label
+### Shows info about the current File and the Canvas size
+## Left Bar
+### First Button: App icon. Displays info about the compiler and the editor
+### Second Button: Resize canvas button, Displays a window for changing the canvas size
+### Third Button: Save button, Saves the current text in a .pw file
+### Fourth Button: Load button, Loads a .pw file form the Local_Files folder. Press info for showing the files and type the name for loading it.
+### Fifth Button: Run button, Runs code loaded in the editor
+### Sixth Button: Clear button, Cleans the canvas
+### Seventh Button: Info button, Brings you here :)
+
 # Pixel Wall-E Programming Language Summary
 
 ## Basic Instructions
@@ -49,16 +64,18 @@
 ## Variables & Expressions
 - **Assignment:** `var ← Expression`  
   - **Valid names:** Letters, numbers, `_` (no leading numbers/`_`).  
-  - **Example:** `n ← (0 - 5)` *(Represents `-5`)*.  
+  - **Example:** `n ← 0 - 5` *(Represents `-5`)*.  
 
 ### Arithmetic Operations
 - Supported: `+`, `-`, `*`, `/`, `**` (power), `%` (modulo).  
-- **Example:** `k ← 3 + (2 * n)`  
+- **Example:** `k ← 3 + 2 * n`  
+- Not supported parenthesis
 
 ### Boolean Expressions
 - Comparisons: `==`, `>=`, `<=`, `>`, `<`.  
 - Logical: `&&` (AND), `||` (OR) *(OR has higher precedence)*.  
 - **Example:** `x > 0 && y < 100`  
+- Not supported parenthesis
 
 ---
 
