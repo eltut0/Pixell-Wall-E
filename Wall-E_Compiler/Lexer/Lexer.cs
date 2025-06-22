@@ -8,7 +8,7 @@ namespace Lexer
     {
         public static List<Token> Tokens = [];
         private static readonly string delimiters =
-    @"(&&|\|\||<=|>=|==|<_|!=|\+{1,2}|\-{1,2}|[()+*\/%&|^!<>=?:,\[\]{}"" #])";
+    @"(&&|\|\||<=|>=|==|<_|!=|\+{1,2}|[()+*\/%&|^!<>=?:,\[\]{}"" #])";
         public static void InitializeLex(string[] code)
         {
             Tokens.Clear();

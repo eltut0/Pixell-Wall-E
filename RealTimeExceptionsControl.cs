@@ -11,7 +11,7 @@ public partial class RealTimeExceptionsControl : Control
 		if (Compiler.CodeCompiler.DontCheck) { return; }
 		CodeEditord editor = GetNode<CodeEditord>(GlobalParameters.ProjectGlobalParameters.CodeEditorNode);
 		string[] code = editor.GetCode();
-		GD.Print(code.Length);
+
 		if (code.SequenceEqual(Code)) { return; }
 		Code = code;
 
