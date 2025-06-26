@@ -20,8 +20,8 @@ namespace Parser
         public static void Fill()
         {
             Color[,] canvas = Compiler.CodeCompiler.CanvasMatrix;
-            int startX = Compiler.CodeCompiler.XPosition;
-            int startY = Compiler.CodeCompiler.YPosition;
+            int startY = Compiler.CodeCompiler.XPosition;
+            int startX = Compiler.CodeCompiler.YPosition;
             Color newColor = Compiler.CodeCompiler.BrushColor;
 
             if (canvas == null) return;

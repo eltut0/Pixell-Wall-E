@@ -1,0 +1,31 @@
+750
+Spawn(50, 50)
+Color("Red")
+Size(3)
+n <_ 10
+lab
+DrawCircle(1, 1, n)
+n <_ n + 10
+ReSpawn(50, 50)
+GoTo [lab] (n <= 340)
+Color("Yellow")
+n <_ 10
+lab2
+ReSpawn(730, 50)
+DrawCircle(-1, 1, n)
+n <_ n + 10
+GoTo [lab2] (n <= 340)
+Color("Blue")
+n <_ 10
+lab3
+ReSpawn(730, 730)
+DrawCircle(-1, -1, n)
+n <_ n + 10
+GoTo [lab3] (n <= 340)
+Color("Green")
+n <_ 10
+lab4
+ReSpawn(50, 730)
+DrawCircle(1, -1, n)
+n <_ n + 10
+GoTo [lab4] (n <= 340)
