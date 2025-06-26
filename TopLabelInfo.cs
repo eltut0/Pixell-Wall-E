@@ -12,7 +12,7 @@ public partial class TopLabelInfo : Label
 	public void UpdateLabel()
 	{
 		string text = Convert.ToString(GlobalParameters.ProjectGlobalParameters.CanvasSize);
-		Text = $"The current canvas size is {text} * {text}" + " -- " + $"The current file is: {GlobalParameters.ProjectGlobalParameters.ActualFileLocation}";
+		Text = $"The current canvas size is {text} * {text}" + " -- " + $"The current file is: {GlobalParameters.ProjectGlobalParameters.ActualFileLocation}" + "                                                   Developed by Jorge Julio de Leon Masson";
 	}
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
