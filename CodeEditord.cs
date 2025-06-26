@@ -2,11 +2,13 @@ using Godot;
 using System;
 using System.Linq;
 using System.Runtime.CompilerServices;
+using System.Text;
 
 public partial class CodeEditord : CodeEdit
 {
 	[Export]
 	private CodeEdit code;
+	private Godot.Collections.Dictionary KeyWordColors { get; set; }
 
 	public override void _Ready()
 	{
@@ -48,16 +50,41 @@ public partial class CodeEditord : CodeEdit
 			//candela 
 			{"candela", new Color("#FFA500")},
 		};
+		KeyWordColors = syntaxhighlight.KeywordColors;
 
 		syntaxhighlight.SymbolColor = new Color("#FF79C6");
 		syntaxhighlight.NumberColor = new Color("#BD93F9");
 		syntaxhighlight.AddColorRegion("\"", "\"", new Color("#CE9178"));
 		syntaxhighlight.AddColorRegion("#", "#", new Color("#666666"));
+
+		TextChanged += () =>
+{
+	SyntaxComplete();
+	UpdateCodeCompletionOptions(true);
+};
+
+
+
 	}
 
 	public string[] GetCode()
 	{
 		string[] returnable = code.Text.Split('\n');
 		return [.. returnable.Where(line => !string.IsNullOrWhiteSpace(line))];
+	}
+
+	private void SyntaxComplete()
+	{
+		foreach (string text in ParserLibrary.Library.Functions)
+		{
+			AddCodeCompletionOption(CodeCompletionKind.Function, text, text + "(", (Color)KeyWordColors[text]);
+		}
+
+		AddCodeCompletionOption(CodeCompletionKind.Function, "GoTo", "GoTo [] ()", new Color("#FF79C6"));
+
+		foreach (string text in ParserLibrary.Library.ColorsDic.Keys)
+		{
+			AddCodeCompletionOption(CodeCompletionKind.Member, "\"" + text + "\"", "\"" + text + "\"", ParserLibrary.Library.ColorsDic[text]);
+		}
 	}
 }
