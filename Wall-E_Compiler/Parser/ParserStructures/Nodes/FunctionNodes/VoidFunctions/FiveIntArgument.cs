@@ -36,7 +36,7 @@ namespace Parser
 
         public static void DrawRectangle(int dirX, int dirY, int distance, int width, int height)
         {
-            if (Math.Abs(dirX) > 1 || Math.Abs(dirY) > 1 || (dirX == 0 && dirY == 0))
+            if (Math.Abs(dirX) > 1 || Math.Abs(dirY) > 1)
             {
                 _ = new Exception(ExceptionType.Argument, -1, "Invalid direction parameters");
                 return;

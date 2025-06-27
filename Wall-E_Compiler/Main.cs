@@ -67,7 +67,7 @@ namespace Compiler
 
                 count++;
                 k++;
-                if (count == 10000)
+                if (count == 1000000)
                 {
                     _ = new Exception(ExceptionType.LineOvercharge, -1, $"Possible infinite loop, stopped \n after {count} iterations");
                 }

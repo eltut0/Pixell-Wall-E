@@ -26,6 +26,7 @@ namespace Parser
 
         static void SetPixelColor(int x, int y, Color color)
         {
+            if (color == Colors.Transparent) { return; }
             Compiler.CodeCompiler.CanvasMatrix[x, y] = color;
         }
         static bool IsWithinCanvas(int x, int y)

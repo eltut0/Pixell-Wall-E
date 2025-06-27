@@ -58,12 +58,14 @@ namespace ParserLibrary
             {
                 int operatorPosition = -1;
 
-
-                for (int i = args.Length - 1; i >= 0; i--)
+                if (operatorPosition == -1)
                 {
-                    if (args[i].Lex == "**" && !IsInsideParenthesis(args[i], args))
+                    for (int i = 0; i < args.Length; i++)
                     {
-                        operatorPosition = i;
+                        if ((args[i].Lex == "+" || args[i].Lex == "-") && !IsInsideParenthesis(args[i], args))
+                        {
+                            operatorPosition = i;
+                        }
                     }
                 }
 
@@ -77,14 +79,13 @@ namespace ParserLibrary
                         }
                     }
                 }
-                if (operatorPosition == -1)
+
+
+                for (int i = args.Length - 1; i >= 0; i--)
                 {
-                    for (int i = 0; i < args.Length; i++)
+                    if (args[i].Lex == "**" && !IsInsideParenthesis(args[i], args))
                     {
-                        if ((args[i].Lex == "+" || args[i].Lex == "-") && !IsInsideParenthesis(args[i], args))
-                        {
-                            operatorPosition = i;
-                        }
+                        operatorPosition = i;
                     }
                 }
 
