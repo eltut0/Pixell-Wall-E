@@ -42,45 +42,15 @@ namespace Parser
                 return;
             }
 
-            int startX = Compiler.CodeCompiler.XPosition;
-            int startY = Compiler.CodeCompiler.YPosition;
-            int endX = startX + dirX * distance;
-            int endY = startY + dirY * distance;
-
-            int canvasSize = GlobalParameters.ProjectGlobalParameters.CanvasSize;
-            if (endX < 0 || endX >= canvasSize || endY < 0 || endY >= canvasSize)
+            for (int i = 0; i < distance; i++)
             {
-                GD.PrintErr("Line goes out of canvas bounds");
-                return;
-            }
+                DrawPixelAt(Compiler.CodeCompiler.XPosition, Compiler.CodeCompiler.YPosition);
+                Compiler.CodeCompiler.XPosition += dirX;
+                Compiler.CodeCompiler.YPosition += dirY;
 
-            int dx = Math.Abs(endX - startX);
-            int dy = -Math.Abs(endY - startY);
-            int sx = startX < endX ? 1 : -1;
-            int sy = startY < endY ? 1 : -1;
-            int err = dx + dy;
-            int currentX = startX;
-            int currentY = startY;
-
-            while (true)
-            {
-                Compiler.CodeCompiler.XPosition = currentX;
-                Compiler.CodeCompiler.YPosition = currentY;
-                FunctionAuxMethods.DrawPixel();
-
-                if (currentX == endX && currentY == endY) break;
-
-                int e2 = 2 * err;
-
-                if (e2 >= dy)
+                if (IsOutsideCanvas(Compiler.CodeCompiler.XPosition + dirX) && IsOutsideCanvas(Compiler.CodeCompiler.YPosition + dirY))
                 {
-                    err += dy;
-                    currentX += sx;
-                }
-                if (e2 <= dx)
-                {
-                    err += dx;
-                    currentY += sy;
+                    return;
                 }
             }
         }
@@ -147,6 +117,13 @@ namespace Parser
                 Compiler.CodeCompiler.YPosition = y;
                 FunctionAuxMethods.DrawPixel();
             }
+        }
+
+        private static bool IsOutsideCanvas(int x)
+        {
+            if (x < 0 || x >= GlobalParameters.ProjectGlobalParameters.CanvasSize) return true;
+
+            return false;
         }
 
     }
