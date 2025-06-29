@@ -62,9 +62,6 @@ public partial class CodeEditord : CodeEdit
 	SyntaxComplete();
 	UpdateCodeCompletionOptions(true);
 };
-
-
-
 	}
 
 	public string[] GetCode()
@@ -85,6 +82,22 @@ public partial class CodeEditord : CodeEdit
 		foreach (string text in ParserLibrary.Library.ColorsDic.Keys)
 		{
 			AddCodeCompletionOption(CodeCompletionKind.Member, "\"" + text + "\"", "\"" + text + "\"", ParserLibrary.Library.ColorsDic[text]);
+		}
+	}
+
+	public override void _Process(double delta)
+	{
+		for (int i = 0; i < GetLineCount(); i++)
+		{
+			SetLineBackgroundColor(i, Colors.Transparent);
+		}
+
+
+		if (Parser.Exception.exceptionList.Count == 0) { return; }
+
+		foreach (Parser.Exception exception in Parser.Exception.exceptionList)
+		{
+			SetLineBackgroundColor(exception.Line - 1, Colors.Red);
 		}
 	}
 }
