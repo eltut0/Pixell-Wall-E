@@ -42,7 +42,7 @@ namespace Parser
             }
             else if (!(Children.Count == ArgsCount[FunctionType]))
             {
-                _ = new Exception(ExceptionType.Argument, Line, Lex);
+                _ = new Exception(ExceptionType.Argument, Line + 1, $"Incorrect args count {Lex}");
                 return;
             }
             SpecialValidation();

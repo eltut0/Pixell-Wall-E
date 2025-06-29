@@ -31,7 +31,7 @@ namespace Parser
                 {
                     child.ExecuteNode();
                 }
-                Result = Operation(Children[0].Result, Children[1].Result);
+                Result = Operation(Children[0].Result, Children[1].Result, Line);
             }
         }
     }

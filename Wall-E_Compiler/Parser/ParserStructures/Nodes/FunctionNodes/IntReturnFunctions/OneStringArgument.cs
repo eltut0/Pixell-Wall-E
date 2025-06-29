@@ -18,7 +18,7 @@ namespace Parser
             {
                 if (!arg.IsString)
                 {
-                    _ = new Exception(ExceptionType.Argument, Line, $"Non valid argument");
+                    _ = new Exception(ExceptionType.Argument, Line + 1, $"Non valid argument");
                     return;
                 }
             }

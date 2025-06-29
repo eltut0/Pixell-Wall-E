@@ -12,7 +12,7 @@ namespace Parser
         {
             if (!(Children[0].GetType() == typeof(Variable) || Children[0].GetType() == typeof(ArithmeticOperatorNode) || ParserLibrary.Library.ReturnFunctions.Contains(Children[0].Lex)))
             {
-                _ = new Exception(ExceptionType.Argument, Line, $"Non valid argument");
+                _ = new Exception(ExceptionType.Argument, Line + 1, $"Non valid argument");
                 return;
             }
         }

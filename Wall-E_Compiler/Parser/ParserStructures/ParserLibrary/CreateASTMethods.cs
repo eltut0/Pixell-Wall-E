@@ -94,7 +94,7 @@ namespace ParserLibrary
                 _ = new Exception(ExceptionType.Argument, tokens[0].Line + 1, "Delimiters expected");
             }
 
-            _ = new Exception(ExceptionType.Argument, -1, "Delimiters expected");
+            _ = new Exception(ExceptionType.Argument, tokens[0].Line + 1, "Delimiters expected");
 
             return new("", -1);
         }

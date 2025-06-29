@@ -7,7 +7,7 @@ namespace Parser
 {
     class ThreeIntsArgument(string lex, int line, FunctionType functionType, List<GenericNode> arguments) : GenericFunction(lex, line, functionType, arguments)
     {
-        private delegate void Operation(int x, int y, int z);
+        private delegate void Operation(int x, int y, int z, int line);
         private readonly Operation _operation = _operations[functionType];
         protected override void SpecialValidation()
         {
@@ -15,7 +15,7 @@ namespace Parser
             {
                 if (!(arg.GetType() == typeof(Variable) || arg.GetType() == typeof(ArithmeticOperatorNode) || ParserLibrary.Library.ReturnFunctions.Contains(arg.Lex)))
                 {
-                    _ = new Exception(ExceptionType.Argument, Line, $"Non valid argument");
+                    _ = new Exception(ExceptionType.Argument, Line + 1, $"Non valid argument");
                     return;
                 }
             }
@@ -26,7 +26,7 @@ namespace Parser
             {
                 arg.ExecuteNode();
             }
-            _operation(Children[0].Result, Children[1].Result, Children[2].Result);
+            _operation(Children[0].Result, Children[1].Result, Children[2].Result, Line);
         }
         private static readonly Dictionary<FunctionType, Operation> _operations = new()
         {
@@ -34,11 +34,11 @@ namespace Parser
             {FunctionType.DrawCircle, DrawCircle},
         };
 
-        public static void DrawLine(int dirX, int dirY, int distance)
+        public static void DrawLine(int dirX, int dirY, int distance, int line)
         {
             if (Math.Abs(dirX) > 1 || Math.Abs(dirY) > 1 || (dirX == 0 && dirY == 0))
             {
-                _ = new Exception(ExceptionType.Argument, -1, "Non valid argument for DrawLine");
+                _ = new Exception(ExceptionType.Argument, line + 1, "Non valid argument for DrawLine");
                 return;
             }
 
@@ -54,11 +54,11 @@ namespace Parser
                 }
             }
         }
-        public static void DrawCircle(int dirX, int dirY, int radius)
+        public static void DrawCircle(int dirX, int dirY, int radius, int line)
         {
             if (Math.Abs(dirX) > 1 || Math.Abs(dirY) > 1 || radius <= 0)
             {
-                _ = new Exception(ExceptionType.Argument, -1, "Non valid argument for DrawCircle");
+                _ = new Exception(ExceptionType.Argument, line + 1, "Non valid argument for DrawCircle");
                 return;
             }
 
@@ -68,7 +68,7 @@ namespace Parser
             int canvasSize = GlobalParameters.ProjectGlobalParameters.CanvasSize;
             if (centerX < 0 || centerX >= canvasSize || centerY < 0 || centerY >= canvasSize)
             {
-                _ = new Exception(ExceptionType.Argument, -2, "Circle center out of canvas bounds");
+                _ = new Exception(ExceptionType.Argument, line + 1, "Circle center out of canvas bounds");
                 return;
             }
 

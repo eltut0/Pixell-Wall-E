@@ -13,13 +13,13 @@ namespace Parser
             GenericNode[] temp = [.. Children];
             if (!temp[0].IsString)
             {
-                _ = new Exception(ExceptionType.Argument, Line, "First argument requires type string");
+                _ = new Exception(ExceptionType.Argument, Line + 1, "First argument requires type string");
             }
             for (int i = 1; i < temp.Length; i++)
             {
                 if (!(temp[i].GetType() == typeof(Variable) || temp[i].GetType() == typeof(ArithmeticOperatorNode) || ParserLibrary.Library.ReturnFunctions.Contains(Children[0].Lex)))
                 {
-                    _ = new Exception(ExceptionType.Argument, Line, $"Non valid {i} argument");
+                    _ = new Exception(ExceptionType.Argument, Line + 1, $"Non valid {i} argument");
                     return;
                 }
             }
@@ -28,14 +28,14 @@ namespace Parser
         {
             foreach (var node in Children) { node.ExecuteNode(); }
             Result = GetColorCountFunc(Children[0].Lex, ((ArithmeticOperatorNode)Children[1]).Result, ((ArithmeticOperatorNode)Children[2]).Result,
-            ((ArithmeticOperatorNode)Children[3]).Result, ((ArithmeticOperatorNode)Children[4]).Result);
+            ((ArithmeticOperatorNode)Children[3]).Result, ((ArithmeticOperatorNode)Children[4]).Result, Line);
         }
-        private static int GetColorCountFunc(string color, int x1, int y1, int x2, int y2)
+        private static int GetColorCountFunc(string color, int x1, int y1, int x2, int y2, int line)
         {
             int lim = GlobalParameters.ProjectGlobalParameters.CanvasSize;
             if (x1 < 0 || x1 >= lim || y1 < 0 || y1 >= lim || x2 < 0 || x2 >= lim || y2 < 0 || y2 >= lim)
             {
-                _ = new Exception(ExceptionType.Argument, -1, "Limits out of the canvas");
+                _ = new Exception(ExceptionType.Argument, line + 1, "Limits out of the canvas");
                 return -1;
             }
 
@@ -47,7 +47,7 @@ namespace Parser
             }
             else
             {
-                _ = new Exception(ExceptionType.Argument, -1, "Non valid color");
+                _ = new Exception(ExceptionType.Argument, line + 1, "Non valid color");
                 return -1;
             }
 

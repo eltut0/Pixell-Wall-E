@@ -167,7 +167,7 @@ namespace ParserLibrary
             {
                 if (opIndex == 0 || opIndex == args.Length - 1)
                 {
-                    _ = new Exception(ExceptionType.Argument, args[opIndex].Line,
+                    _ = new Exception(ExceptionType.Argument, args[opIndex].Line + 1,
                         $"Missing operands for operator '{args[opIndex].Lex}'");
                     return null;
                 }
@@ -212,7 +212,7 @@ namespace ParserLibrary
 
                     if (opIndex == 0 || opIndex == args.Length - 1)
                     {
-                        _ = new Exception(ExceptionType.Argument, token.Line,
+                        _ = new Exception(ExceptionType.Argument, token.Line + 1,
                             $"Missing operands for comparison operator '{token.Lex}'");
                         return null;
                     }
@@ -222,7 +222,7 @@ namespace ParserLibrary
 
                     if (leftNode == null || rightNode == null)
                     {
-                        _ = new Exception(ExceptionType.Argument, token.Line,
+                        _ = new Exception(ExceptionType.Argument, token.Line + 1,
                             "Invalid operands for comparison");
                         return null;
                     }
@@ -241,7 +241,7 @@ namespace ParserLibrary
                 }
             }
 
-            _ = new Exception(ExceptionType.TypeError, args[0].Line,
+            _ = new Exception(ExceptionType.TypeError, args[0].Line + 1,
                 "No valid comparison operator found");
             return null;
         }

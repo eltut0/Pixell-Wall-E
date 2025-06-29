@@ -18,7 +18,7 @@ namespace Parser
             {
                 if (!(arg.GetType() == typeof(Variable) || arg.GetType() == typeof(ArithmeticOperatorNode) || ParserLibrary.Library.ReturnFunctions.Contains(Children[0].Lex)))
                 {
-                    _ = new Exception(ExceptionType.Argument, Line, $"Non valid argument");
+                    _ = new Exception(ExceptionType.Argument, Line + 1, $"Non valid argument");
                     return;
                 }
             }
