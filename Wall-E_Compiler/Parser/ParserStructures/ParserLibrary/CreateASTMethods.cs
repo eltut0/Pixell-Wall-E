@@ -47,7 +47,7 @@ namespace ParserLibrary
             }
             if (!(tokens.Length < 2))
             {
-                if (tokens[1].Lex != "<_" && tokens[1].Lex != "(" && tokens[1].Lex != "[")
+                if (tokens[1].Lex != "<-" && tokens[1].Lex != "(" && tokens[1].Lex != "[")
                 {
                     _ = new Exception(ExceptionType.SyntaxError, tokens[0].Line + 1, "Assignation for variable expected");
                 }
@@ -75,7 +75,7 @@ namespace ParserLibrary
                     return gn;
                 }
 
-                if (tokens[1].Lex == "<_")
+                if (tokens[1].Lex == "<-")
                 {
                     GenericNode an = BuildArgument(tokens[2..]);
                     if (an == null) { return new("", -1); }

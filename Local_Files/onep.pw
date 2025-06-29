@@ -60,9 +60,9 @@ Fill()
 Color("Transparent")
 DrawLine(1,0,8)
 DrawLine(0,1,2)
-x<_1
-y<_ -1
-n<_0
+x<-1
+y<- -1
+n<-0
 upBones
 Color("Black")
 DrawLine(x,y,4)
@@ -78,23 +78,23 @@ DrawCircle(x,y,2)
 Color("Transparent")
 DrawLine(0,y - 2*y,3)
 DrawLine(x - 2*x,0,30)
-x<_ x - 2*x
+x<- x - 2*x
 GoTo[End](n>3)
 GoTo[out](n>0)
-n<_1
+n<-1
 GoTo[upBones](1==1)
 out
 GoTo[base](n>1)
 Color("Transparent")
 DrawLine(0,1,18)
 DrawLine(-1,0,7)
-y<_ 1
-n<_ 2
+y<- 1
+n<- 2
 GoTo[upBones](n<3)
 base
 Color("Transparent")
 DrawLine(1,0,11)
 DrawLine(0,-1,1)
-n<_4
+n<-4
 GoTo[upBones](1>0)
 End

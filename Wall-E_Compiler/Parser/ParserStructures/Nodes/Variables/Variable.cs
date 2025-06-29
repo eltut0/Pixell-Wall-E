@@ -15,7 +15,7 @@ namespace Parser
             }
             else
             {
-                _ = new Exception(ExceptionType.NotDefinedObject, Line, Lex);
+                _ = new Exception(ExceptionType.NotDefinedObject, Line + 1, Lex);
             }
         }
     }
