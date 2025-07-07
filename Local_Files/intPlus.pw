@@ -1,0 +1,34 @@
+750
+Spawn(50,50)
+startx <- 50
+starty <- 50
+count <- 5
+directx <- 1
+directy <- 1
+main
+x <- IsBrushColor("Red")
+GoTo [redChangeColor] (x == 1)
+x <- IsBrushColor("Blue")
+GoTo [blueChangeColor] (x == 1)
+Color("Red")
+GoTo [paintCirc] (1==1)
+redChangeColor
+Color("Blue")
+GoTo [paintCirc] (1==1)
+blueChangeColor
+Color("Green")
+paintCirc
+DrawCircle(directx, directy, count)
+count <- count + 5
+ReSpawn(startx,starty)
+GoTo [main] (count < 325)
+GoTo [changeParameters] (directx == 1)
+GoTo [end] (1 == 1)
+changeParameters
+startx <- 700
+starty <- 700
+count <- 5
+directx <- -1
+directy <- -1
+GoTo [main] (1==1)
+end

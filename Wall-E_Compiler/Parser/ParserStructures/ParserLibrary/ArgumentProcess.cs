@@ -1,4 +1,3 @@
-using Godot;
 using Lexer;
 using Parser;
 using System;
@@ -81,9 +80,9 @@ namespace ParserLibrary
                 }
 
 
-                for (int i = args.Length - 1; i >= 0; i--)
+                for (int i = 0; i < args.Length; i++)
                 {
-                    if (args[i].Lex == "**" && !IsInsideParenthesis(args[i], args))
+                    if ((args[i].Lex == "**") && !IsInsideParenthesis(args[i], args))
                     {
                         operatorPosition = i;
                     }
@@ -117,10 +116,10 @@ namespace ParserLibrary
                     if (operatorPosition == 0 || operatorPosition == args.Length - 1)
                     {
                         _ = new Exception(ExceptionType.Argument, args[0].Line + 1, "Missing arithmetic operation or variable reference");
-                    }//this case will call another node with an empty tokens array
+                    }
 
-                    GenericNode _left = BuildArgument(args[..operatorPosition]);
-                    GenericNode _right = BuildArgument(args[(operatorPosition + 1)..]);
+                    GenericNode _left = BuildArithmeticNode(args[..operatorPosition]);
+                    GenericNode _right = BuildArithmeticNode(args[(operatorPosition + 1)..]);
                     return new ArithmeticOperatorNode(args[0].Lex, args[0].Line, operation, _left, _right);
                 }
 

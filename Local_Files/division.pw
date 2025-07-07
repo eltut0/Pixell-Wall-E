@@ -1,0 +1,9 @@
+10
+Spawn(0,0)
+x <- 12 / 4 / 3
+GoTo [tiza] (x == 1)
+GoTo 	[end] (1 == 1)
+tiza
+Color("Red")
+Fill()
+end

@@ -1,0 +1,9 @@
+10
+Spawn(0,0)
+x <- 2**3**2
+GoTo [print] (x == 64)
+GoTo [end] (1 == 1)
+print
+Color("Aquamarine")
+Fill()
+end
